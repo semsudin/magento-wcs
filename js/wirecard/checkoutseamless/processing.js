@@ -254,7 +254,6 @@ function html_entity_decode(str) {
     var tarea = document.createElement('textarea');
     tarea.innerHTML = str;
     return tarea.value;
-    tarea.parentNode.removeChild(tarea);
 }
 
 function prepareSubmittedFields(response) {
