@@ -1,4 +1,7 @@
 # Wirecard Checkout Seamless extension for Magento
+
+[![License](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://raw.githubusercontent.com/wirecard/Magento-WCS/master/LICENSE)
+
 Wirecard Checkout Seamless extension for Magento. 
 
 Tested with Magento Community Edition 1.9.2.3
