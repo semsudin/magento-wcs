@@ -1,0 +1,11 @@
+{
+    "name": "wirecard/magento-wcs",
+    "license": "GPL-2.0",
+    "type": "magento-module",
+    "description": "Wirecard Checkout Seamless extension for Magento",
+    "homepage": "https://github.com/wirecard/Magento-WCS",
+    "require": {
+        "php": ">=5.3",
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
