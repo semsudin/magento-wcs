@@ -6,8 +6,6 @@
 
 Wirecard Checkout Seamless extension for Magento. 
 
-Minimum requirements PHP v5.3
-
 Our [Online Guides](https://guides.wirecard.at/) provide further information on payment methods and additional features. 
 
 ## Installation
