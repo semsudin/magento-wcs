@@ -3,7 +3,7 @@
     "license": "GPL-2.0",
     "type": "magento-module",
     "description": "Wirecard Checkout Seamless extension for Magento",
-    "keywords": ["wirecard", "checkout", "seamless", "payment", "pci dss saq a/a-ep", "magento"],
+    "keywords": ["wirecard", "checkout", "seamless", "payment", "pci-dss", "saq-a", "saq-a-ep", "magento"],
     "homepage": "https://www.wirecard.at",
     "support": {
         "email": "support.at@wirecard.com",
