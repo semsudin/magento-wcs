@@ -89,8 +89,8 @@ class Wirecard_CheckoutSeamless_Model_Invoiceb2b extends Wirecard_CheckoutSeamle
         }
 
         $billingAddress = $quote->getBillingAddress();
-        if (strlen($billingAddress->getCompany()))
-            return true;
+        if (!strlen($billingAddress->getCompany()))
+            return false;
 
         $vat_id = $billingAddress->getData('vat_id');
         if (!strlen($vat_id))
