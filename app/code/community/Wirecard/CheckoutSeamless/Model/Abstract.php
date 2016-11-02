@@ -134,7 +134,8 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
 
     public function getFormCode()
     {
-        return array_pop(explode('_', $this->_code));
+        $codeData = explode('_', $this->_code);
+        return array_pop($codeData);
     }
 
 
