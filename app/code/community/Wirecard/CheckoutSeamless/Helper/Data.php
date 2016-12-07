@@ -171,7 +171,7 @@ class Wirecard_CheckoutSeamless_Helper_Data extends Mage_Payment_Helper_Data
                 $dataStorageInit->setIframeCssUrl(trim($this->getConfigData('ccard/iframe_css_url')));
             }
 
-            $dataStorageInit->setCreditCardCardholderNameField($this->getConfigData('ccard/showcardholder'));
+            $dataStorageInit->setCreditCardShowCardholderNameField($this->getConfigData('ccard/showcardholder'));
             $dataStorageInit->setCreditCardShowCvcField($this->getConfigData('ccard/showcvc'));
             $dataStorageInit->setCreditCardShowIssueDateField($this->getConfigData('ccard/showissuedate'));
             $dataStorageInit->setCreditCardShowIssueNumberField($this->getConfigData('ccard/showissuenumber'));
