@@ -181,10 +181,6 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
             ->createConsumerMerchantCrmId($this->getOrder()->getCustomerEmail())
             ->setConsumerData($this->_getConsumerData());
 
-        // using legacy basket parameters
-        $init->__set('basketAmount', round($this->getOrder()->getBaseGrandTotal(), 2));
-        $init->__set('basketCurrency', $this->getOrder()->getBaseCurrencyCode());
-
         $init->mage_orderId = $this->getOrder()->getRealOrderId();
 
         $init->generateCustomerStatement($helper->getConfigData('options/shopname'));
