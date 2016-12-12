@@ -167,7 +167,7 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
             if (!$order->getPayment()->getAdditionalInformation('confirmProcessed')) {
                 $msg = $helper->__('An internal error occurred during the payment process!');
                 $helper->log(__METHOD__ . ':Confirm via server2server request is not working, check your firewall!');
-                $order->setState(Mage_Sales_Model_Order::STATE_CANCEL, true, $helper->__($msg))->save();
+                $order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true, $helper->__($msg))->save();
                 $order->cancel();
                 $payment = $order->getPayment();
                 $payment->setAdditionalInformation('consumerMessage', $msg);
