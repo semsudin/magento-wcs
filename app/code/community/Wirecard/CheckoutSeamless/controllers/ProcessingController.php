@@ -254,7 +254,29 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
 
                 case WirecardCEE_QMore_ReturnFactory::STATE_CANCEL:
                     /** @var WirecardCEE_QMore_Return_Cancel $return */
-                    $this->_cancelOrder($order);
+                    if (!$this->_succeeded($order)) {
+                        $msg = array();
+                        foreach ($return->getErrors() as $error) {
+                            $msg[] = $error->getConsumerMessage();
+                        }
+
+                        if (!count($msg)) {
+                            // dont show technical error to consumer
+                            $message = $helper->__('An error occured during the payment process');
+                        }
+                        else {
+                            $message = implode("<br/>\n", $msg);
+                        }
+
+                        $payment = $order->getPayment();
+                        $additionalInformation = Array('confirmProcessed' => true, 'consumerMessage' => $message);
+                        $payment->setAdditionalInformation($additionalInformation);
+                        $payment->setAdditionalData(serialize($additionalInformation));
+                        $payment->save();
+
+                        $order->setState(Mage_Sales_Model_Order::STATE_PENDING_PAYMENT, true, $helper->__('An error occured during the payment process'))->save();
+                        $order->cancel();
+                    }
                     break;
 
                 case WirecardCEE_QMore_ReturnFactory::STATE_FAILURE:
@@ -267,7 +289,7 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
 
                         if (!count($msg)) {
                             // dont show technical error to consumer
-                            $message = $helper->__('An error occured during the payment process');
+                            $message = $helper->__('Customer canceled the payment process');
                         }
                         else {
                             $message = implode("<br/>\n", $msg);
