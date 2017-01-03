@@ -34,7 +34,7 @@
 <config>
     <modules>
         <wirecard_checkoutseamless>
-            <version>4.0.10</version>
+            <version>4.1.2</version>
         </wirecard_checkoutseamless>
     </modules>
     <global>
@@ -179,25 +179,25 @@
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_ccMoto>
             <wirecard_checkoutseamless_eps>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/eps</model>
                 <title>Wirecard Checkout Seamless eps Online Bank Transfer</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_eps>
             <wirecard_checkoutseamless_ideal>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/ideal</model>
                 <title>Wirecard Checkout Seamless iDEAL</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_ideal>
             <wirecard_checkoutseamless_giropay>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/giropay</model>
                 <title>Wirecard Checkout Seamless giropay</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_giropay>
             <wirecard_checkoutseamless_tatrapay>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/tatrapay</model>
                 <title>Wirecard Checkout Seamless TatraPay</title>
                 <allowspecific>0</allowspecific>
@@ -209,73 +209,73 @@
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_sofortbanking>
             <wirecard_checkoutseamless_skrilldirect>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/skrilldirect</model>
                 <title>Wirecard Checkout Seamless Skrill Direct</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_skrilldirect>
             <wirecard_checkoutseamless_skrillwallet>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/skrillwallet</model>
                 <title>Wirecard Checkout Seamless Skrill Digital Wallet</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_skrillwallet>
             <wirecard_checkoutseamless_mpass>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/mpass</model>
                 <title>Wirecard Checkout Seamless mpass</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_mpass>
             <wirecard_checkoutseamless_bmc>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/bmc</model>
                 <title>Wirecard Checkout Seamless BanContact/Mister Cash</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_bmc>
             <wirecard_checkoutseamless_p24>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/p24</model>
                 <title>Wirecard Checkout Seamless Przelewy24</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_p24>
             <wirecard_checkoutseamless_poli>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/poli</model>
                 <title>Wirecard Checkout Seamless POLi</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_poli>
             <wirecard_checkoutseamless_moneta>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/moneta</model>
                 <title>Wirecard Checkout Seamless moneta.ru</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_moneta>
             <wirecard_checkoutseamless_ekonto>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/ekonto</model>
                 <title>Wirecard Checkout Seamless eKonto</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_ekonto>
             <wirecard_checkoutseamless_trustly>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/trustly</model>
                 <title>Wirecard Checkout Seamless Trustly</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_trustly>
             <wirecard_checkoutseamless_paybox>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/paybox</model>
                 <title>Wirecard Checkout Seamless paybox</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_paybox>
             <wirecard_checkoutseamless_paysafecard>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/paysafecard</model>
                 <title>Wirecard Checkout Seamless paysafecard</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_paysafecard>
             <wirecard_checkoutseamless_quick>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/quick</model>
                 <title>Wirecard Checkout Seamless @Quick</title>
                 <allowspecific>0</allowspecific>
@@ -287,7 +287,7 @@
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_paypal>
             <wirecard_checkoutseamless_epaybg>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/epaybg</model>
                 <title>Wirecard Checkout Seamless epay.bg</title>
                 <allowspecific>0</allowspecific>
@@ -309,7 +309,7 @@
                 <payolution_terms>0</payolution_terms>
             </wirecard_checkoutseamless_invoice>
             <wirecard_checkoutseamless_invoiceb2b>
-                <active>1</active>
+                <active>0</active>
                 <provider>payolution</provider>
                 <model>wirecard_checkoutseamless/invoiceb2b</model>
                 <title>Wirecard Checkout Seamless Invoice B2B</title>
@@ -318,7 +318,7 @@
                 <max_order_total>3500</max_order_total>
             </wirecard_checkoutseamless_invoiceb2b>
             <wirecard_checkoutseamless_installment>
-                <active>1</active>
+                <active>0</active>
                 <provider>payolution</provider>
                 <model>wirecard_checkoutseamless/installment</model>
                 <title>Wirecard Checkout Seamless Installment</title>
@@ -328,13 +328,13 @@
                 <payolution_terms>0</payolution_terms>
             </wirecard_checkoutseamless_installment>
             <wirecard_checkoutseamless_voucher>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/voucher</model>
                 <title>Wirecard Checkout Seamless My Voucher</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_voucher>
             <wirecard_checkoutseamless_trustpay>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/trustpay</model>
                 <title>Wirecard Checkout Seamless TrustPay</title>
                 <allowspecific>0</allowspecific>
