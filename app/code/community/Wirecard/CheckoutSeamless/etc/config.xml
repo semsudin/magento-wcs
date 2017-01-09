@@ -167,7 +167,7 @@
         </wirecard_checkoutseamless>
         <payment>
             <wirecard_checkoutseamless_cc>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/cc</model>
                 <title>Wirecard Checkout Seamless Credit Card / Maestro SecureCode</title>
                 <allowspecific>0</allowspecific>
@@ -203,7 +203,7 @@
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_tatrapay>
             <wirecard_checkoutseamless_sofortbanking>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/sofortbanking</model>
                 <title>Wirecard Checkout Seamless SOFORT Banking</title>
                 <allowspecific>0</allowspecific>
@@ -281,7 +281,7 @@
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_quick>
             <wirecard_checkoutseamless_paypal>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/paypal</model>
                 <title>Wirecard Checkout Seamless PayPal</title>
                 <allowspecific>0</allowspecific>
@@ -293,13 +293,13 @@
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_epaybg>
             <wirecard_checkoutseamless_sepadd>
-                <active>1</active>
+                <active>0</active>
                 <model>wirecard_checkoutseamless/sepadd</model>
                 <title>Wirecard Checkout Seamless SEPA Direct Debit</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_sepadd>
             <wirecard_checkoutseamless_invoice>
-                <active>1</active>
+                <active>0</active>
                 <provider>payolution</provider>
                 <model>wirecard_checkoutseamless/invoice</model>
                 <title>Wirecard Checkout Seamless Invoice</title>
