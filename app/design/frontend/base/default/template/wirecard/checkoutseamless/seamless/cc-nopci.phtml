@@ -43,7 +43,7 @@ $_code = $this->getMethod()->getFormCode();
 
 <input type="hidden" value="1" name="wirecard_checkoutseamless_<?php echo $_code ?>_new" id="wirecard_checkoutseamless_<?php echo $_code ?>_new" autocomplete="off" />
 <input type="hidden" value="1" name="wirecard_checkoutseamless_<?php echo $_code ?>_pci3" id="wirecard_checkoutseamless_<?php echo $_code ?>_pci3" autocomplete="off" />
-<input type="hidden" value="CCARD" class="wcs-paymentmethod" name="wirecard_checkoutseamless_<?php echo $_code ?>_type" autocomplete="off" />
+<input type="hidden" value="CCARD" class="wcs-paymentmethod" id="wirecard_checkoutseamless_<?php echo $_code ?>_type" autocomplete="off" />
 <script type="text/javascript">
     var wdcee = new WirecardCEE_DataStorage();
     wirecardDatastorageIframe = wdcee.buildIframeCreditCard('wirecard_checkoutseamless_iframe_<?php echo $_code ?>', '100%', '320px');

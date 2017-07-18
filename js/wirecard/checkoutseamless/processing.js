@@ -47,25 +47,27 @@ Event.observe(window, 'load', function () {
         payment.save = payment.save.wrap(function (origSaveMethod) {
             if (this.currentMethod
                 && this.currentMethod.substr(0, 25) == 'wirecard_checkoutseamless'
-                && $j('#' + this.currentMethod + '_new').val() == '1') {
+                && typeof document.getElementById('#' + this.currentMethod + '_new') !== 'undefined') {
                 var paymentData = null;
+                $$("#payment_form_" + this.currentMethod + ' .has-wcs-data').each(function (item) {
+                    if (item.hasAttribute('data-wcs-fieldname')) {
+                        var fieldname = item.readAttribute('data-wcs-fieldname');
+                        if (typeof fieldname == 'undefined')
+                            return true;
 
-                $j("#payment_form_" + this.currentMethod + ' .has-wcs-data').each(function () {
-                    var fieldname = $j(this).attr('data-wcs-fieldname');
-                    if (typeof fieldname == 'undefined')
-                        return true;
-
-                    if (paymentData === null) {
-                        paymentData = {};
+                        if (paymentData === null) {
+                            paymentData = {};
+                        }
+                        paymentData[fieldname] = item.value;
                     }
-                    paymentData[fieldname] = $j(this).val();
                 });
 
-                if (paymentData === null && $j('#' + this.currentMethod + '_pci3').val() == '1')
+                if (paymentData === null && typeof $('#' + this.currentMethod + '_pci3') !== 'undefined')
                     paymentData = { };
 
-                if (paymentData !== null)
-                    paymentData.paymentType = $j("#payment_form_" + this.currentMethod + ' .wcs-paymentmethod').val();
+                if (paymentData !== null && $(this.currentMethod + '_type') !== null){
+                    paymentData.paymentType = $(this.currentMethod + '_type').value;
+                }
 
                 if (paymentData === null
                     || (typeof wirecarcdCheckoutSeamlessResponseData[this.currentMethod] !== 'undefined'
@@ -326,19 +328,19 @@ function changePaymentData() {
 }
 
 function emptyPaymentFields() {
-    $j('#payment_form_' + payment.currentMethod + ' .no-submit').each(function (el) {
+    $$('#payment_form_' + payment.currentMethod + ' .no-submit').each(function (el) {
         this.value = '';
     });
 }
 
 function emptyHiddenFields() {
-    $j('#payment_form_' + payment.currentMethod + ' .wcs-anon-data-hidden').each(function (el) {
+    $$('#payment_form_' + payment.currentMethod + ' .wcs-anon-data-hidden').each(function (el) {
         this.value = '';
     });
 }
 
 function enterAnonData(data) {
-    $j('#' + payment.currentMethod + '_saved_data span').each(function (el) {
+    $$('#' + payment.currentMethod + '_saved_data span').each(function (el) {
         this.innerHTML = data[this.id];
     });
 }
