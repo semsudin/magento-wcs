@@ -33,7 +33,7 @@
 class Wirecard_CheckoutSeamless_Helper_Data extends Mage_Payment_Helper_Data
 {
 
-    protected $_pluginVersion = '4.1.3';
+    protected $_pluginVersion = '4.2.0';
     protected $_pluginName = 'Wirecard/CheckoutSeamless';
 
     /**

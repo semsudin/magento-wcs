@@ -47,7 +47,8 @@ Event.observe(window, 'load', function () {
         payment.save = payment.save.wrap(function (origSaveMethod) {
             if (this.currentMethod
                 && this.currentMethod.substr(0, 25) == 'wirecard_checkoutseamless'
-                && typeof document.getElementById('#' + this.currentMethod + '_new') !== 'undefined') {
+                && $(this.currentMethod + '_new') !== null ) {
+
                 var paymentData = null;
                 $$("#payment_form_" + this.currentMethod + ' .has-wcs-data').each(function (item) {
                     if (item.hasAttribute('data-wcs-fieldname')) {

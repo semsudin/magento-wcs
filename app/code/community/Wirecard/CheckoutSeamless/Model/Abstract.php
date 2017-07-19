@@ -53,7 +53,7 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
     protected $_defaultLocale = 'en';
 
     protected $_order;
-    protected $_pluginVersion = '4.1.3';
+    protected $_pluginVersion = '4.2.0';
     protected $_pluginName = 'Wirecard/CheckoutSeamless';
 
     protected $_formBlockType = 'wirecard_checkoutseamless/form';
