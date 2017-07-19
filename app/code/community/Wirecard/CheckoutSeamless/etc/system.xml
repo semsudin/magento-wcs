@@ -1886,18 +1886,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment>Only applicable for RatePay.</comment>
                         </currencies>
-                        <min_age translate="label,comment">
-                            <label>Minimum age</label>
-                            <frontend_type>text</frontend_type>
-                            <validate>validate-not-negative-number</validate>
-                            <sort_order>120</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <comment>Only applicable for RatePay.</comment>
-                        </min_age>
                     </fields>
                 </wirecard_checkoutseamless_invoice>
                 <wirecard_checkoutseamless_invoiceb2b translate="label" module="wirecard_checkoutseamless">
@@ -2070,18 +2059,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment>Only applicable for RatePay.</comment>
                         </currencies>
-                        <min_age translate="label,comment">
-                            <label>Minimum age</label>
-                            <frontend_type>text</frontend_type>
-                            <validate>validate-not-negative-number</validate>
-                            <sort_order>120</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <comment>Only applicable for RatePay.</comment>
-                        </min_age>
                     </fields>
                 </wirecard_checkoutseamless_installment>
                 <wirecard_checkoutseamless_voucher translate="label" module="wirecard_checkoutseamless">
