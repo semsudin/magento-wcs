@@ -50,10 +50,8 @@ class Wirecard_CheckoutSeamless_Model_Autoloader extends Mage_Core_Model_Observe
         // rewrite class filename, avoid conflicts with installed old plugin, which resides under WirecardCEE
         if (preg_match('/^WirecardCEE_/', $class)) {
             if(defined('COMPILER_INCLUDE_PATH')) {
-                $class = str_replace('WirecardCEE', 'Wirecard_CheckoutSeamless', $class);
                 $classFile = COMPILER_INCLUDE_PATH . DIRECTORY_SEPARATOR . $class . '.php';
             } else {
-                $class = str_replace('WirecardCEE', 'Wirecard' . DIRECTORY_SEPARATOR . 'CheckoutSeamless', $class);
                 $classFile = str_replace(' ', DIRECTORY_SEPARATOR, ucwords(str_replace('_', ' ', $class))) . '.php';
             }
             include $classFile;
