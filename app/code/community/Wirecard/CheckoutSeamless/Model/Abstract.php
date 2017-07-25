@@ -53,7 +53,7 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
     protected $_defaultLocale = 'en';
 
     protected $_order;
-    protected $_pluginVersion = '4.1.3';
+    protected $_pluginVersion = '4.2.0';
     protected $_pluginName = 'Wirecard/CheckoutSeamless';
 
     protected $_formBlockType = 'wirecard_checkoutseamless/form';
@@ -439,6 +439,10 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
      */
     protected function _isAvailablePayolution($quote)
     {
+	    $currencies = explode(',', $this->getConfigData('currencies'));
+	    if (!in_array($quote->getQuoteCurrencyCode(), $currencies))
+		    return false;
+
         $dob = $quote->getCustomerDob();
         //we only need to check the dob if it's set. Else we ask for dob on payment selection page.
         if ($dob) {
@@ -446,7 +450,7 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
             $currentYear = date('Y');
             $currentMonth = date('m');
             $currentDay = date('d');
-            $ageCheckDate = ($currentYear - 17) . '-' . $currentMonth . '-' . $currentDay;
+            $ageCheckDate = ($currentYear - 18) . '-' . $currentMonth . '-' . $currentDay;
             $ageCheckObject = new DateTime($ageCheckDate);
             if ($ageCheckObject < $dobObject) {
                 //customer is younger than 18 years. Installment not available
@@ -460,10 +464,6 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
 
         if (!$this->compareAddresses($quote))
             return false;
-
-        if ($quote->getQuoteCurrencyCode() != 'EUR') {
-            return false;
-        }
 
         return parent::isAvailable($quote);
     }
@@ -480,7 +480,6 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
             return false;
 
         $dob = $quote->getCustomerDob();
-        $minAge = (int)$this->getConfigData('min_age');
 
         //we only need to check the dob if it's set. Else we ask for dob on payment selection page.
         if ($dob) {
@@ -488,7 +487,7 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
             $currentYear = date('Y');
             $currentMonth = date('m');
             $currentDay = date('d');
-            $ageCheckDate = ($currentYear - $minAge) . '-' . $currentMonth . '-' . $currentDay;
+            $ageCheckDate = ($currentYear - 18) . '-' . $currentMonth . '-' . $currentDay;
             $ageCheckObject = new DateTime($ageCheckDate);
             if ($ageCheckObject < $dobObject) {
                 return false;

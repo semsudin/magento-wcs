@@ -30,14 +30,12 @@
  * Please do not use the plugin if you do not agree to these terms of use!
  */
 
-class Wirecard_CheckoutSeamless_Model_Mpass extends Wirecard_CheckoutSeamless_Model_Abstract
-{
-    /**
-    * unique internal payment method identifier
-    *
-    * @var string [a-z0-9_]
-    **/
-    protected $_code = 'wirecard_checkoutseamless_mpass';
-    protected $_paymentMethod = WirecardCEE_Stdlib_PaymentTypeAbstract::MPASS;
-
-}
+return Array(
+    'DATA_STORAGE_URL' => 'https://checkout.wirecard.com/seamless/dataStorage',
+    'FRONTEND_URL'     => 'https://checkout.wirecard.com/seamless/frontend',
+    'BACKEND_URL'      => 'https://checkout.wirecard.com/seamless/backend',
+    'MODULE_NAME'      => 'WirecardCEE_QMore',
+    'MODULE_VERSION'   => '3.3.0',
+    'DEPENDENCIES'     => array(),
+    'USE_DEBUG'        => false
+);
