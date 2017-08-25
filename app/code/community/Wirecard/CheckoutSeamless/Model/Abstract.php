@@ -144,6 +144,7 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
         $order = $this->getOrder();
         /** @var Wirecard_CheckoutSeamless_Helper_Data $helper */
         $helper = Mage::helper('wirecard_checkoutseamless');
+        $session = Mage::getModel('customer/session');
 
         $precision = 2;
 
@@ -182,6 +183,11 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
             ->setConsumerData($this->_getConsumerData());
 
         $init->mage_orderId = $this->getOrder()->getRealOrderId();
+
+        if (strlen($session->getData('wirecard_cs_consumerDeviceId'))) {
+            $init->consumerDeviceId = $session->getData('wirecard_cs_consumerDeviceId');
+            $session->unsetData('wirecard_cs_consumerDeviceId');
+        }
 
         $init->generateCustomerStatement($helper->getConfigData('options/shopname'));
 
