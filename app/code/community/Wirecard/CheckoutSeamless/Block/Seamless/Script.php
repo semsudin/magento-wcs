@@ -70,4 +70,18 @@ class Wirecard_CheckoutSeamless_Block_Seamless_Script extends Mage_Core_Block_Te
         return $this->_dataStorageUrl;
     }
 
+    public function getConsumerDeviceId() {
+        $session = Mage::getModel('customer/session');
+
+        if (strlen($session->getData('wirecard_cs_consumerDeviceId'))) {
+            return $session->getData('wirecard_cs_consumerDeviceId');
+        }
+        else {
+            $timestamp = microtime();
+            $consumerDeviceId = md5(Mage::helper('wirecard_checkoutseamless')->getConfigData('settings/customer_id') . "_" . $timestamp);
+            $session->setData('wirecard_cs_consumerDeviceId', $consumerDeviceId);
+            return $consumerDeviceId;
+        }
+    }
+
 }
