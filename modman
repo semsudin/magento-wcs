@@ -1,5 +1,5 @@
 app/code/community/Wirecard/CheckoutSeamless                            app/code/community/Wirecard/CheckoutSeamless
-app/code/local/Wirecard/CheckoutSeamless                                app/code/local/Wirecard/CheckoutSeamless
+app/code/local/WirecardCEE                                              app/code/local/WirecardCEE
 app/design/adminhtml/default/default/template/wirecard                  app/design/adminhtml/default/default/template/wirecard
 app/design/frontend/base/default/layout/wirecard_checkoutseamless.xml   app/design/frontend/base/default/layout/wirecard_checkoutseamless.xml
 app/design/frontend/base/default/template/wirecard                      app/design/frontend/base/default/template/wirecard
