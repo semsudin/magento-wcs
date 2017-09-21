@@ -34,7 +34,7 @@
 <config>
     <modules>
         <wirecard_checkoutseamless>
-            <version>4.2.2</version>
+            <version>4.2.3</version>
         </wirecard_checkoutseamless>
     </modules>
     <global>
@@ -205,7 +205,7 @@
             <wirecard_checkoutseamless_sofortbanking>
                 <active>0</active>
                 <model>wirecard_checkoutseamless/sofortbanking</model>
-                <title>SOFORT Banking</title>
+                <title>Online bank transfer.</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_sofortbanking>
             <wirecard_checkoutseamless_skrillwallet>
