@@ -33,9 +33,9 @@
  -->
 <config>
     <modules>
-        <wirecard_checkoutseamless>
+        <Wirecard_CheckoutSeamless>
             <version>4.2.3</version>
-        </wirecard_checkoutseamless>
+        </Wirecard_CheckoutSeamless>
     </modules>
     <global>
         <models>
