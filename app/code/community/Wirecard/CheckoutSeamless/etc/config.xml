@@ -262,12 +262,6 @@
                 <title>paysafecard</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_paysafecard>
-            <wirecard_checkoutseamless_quick>
-                <active>0</active>
-                <model>wirecard_checkoutseamless/quick</model>
-                <title>@Quick</title>
-                <allowspecific>0</allowspecific>
-            </wirecard_checkoutseamless_quick>
             <wirecard_checkoutseamless_paypal>
                 <active>0</active>
                 <model>wirecard_checkoutseamless/paypal</model>
