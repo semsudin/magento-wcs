@@ -121,26 +121,31 @@ Event.observe(window, 'load', function () {
                                 //show iframe and set link
                                 //toggleWirecardCheckoutSeamlessIFrame();
                                 //$('wirecard-checkoutseamless-iframe').src = innerResponse.url;
-                                var oPopup = new Window({
-                                    id:'popup_window',
-                                    className: 'magento',
-                                    url: innerResponse.url,
-                                    width: 500,
-                                    height: 500,
-                                    minimizable: false,
-                                    maximizable: false,
-                                    closable: false,
-                                    showEffectOptions: {
-                                        duration: 0.4
-                                    },
-                                    hideEffectOptions:{
-                                        duration: 0.4
-                                    },
-                                    destroyOnClose: true
-                                });
-                                oPopup.setZIndex(100);
-                                oPopup.showCenter(true);
-                                console.log(oPopup);
+                                if(payment.currentMethod.substr(26) == 'sofortbanking') {
+                                    window.location.href = innerResponse.url;
+                                }
+                                else {
+                                    var oPopup = new Window({
+                                        id:'popup_window',
+                                        className: 'magento',
+                                        url: innerResponse.url,
+                                        width: 500,
+                                        height: 500,
+                                        minimizable: false,
+                                        maximizable: false,
+                                        closable: false,
+                                        showEffectOptions: {
+                                            duration: 0.4
+                                        },
+                                        hideEffectOptions:{
+                                            duration: 0.4
+                                        },
+                                        destroyOnClose: true
+                                    });
+                                    oPopup.setZIndex(100);
+                                    oPopup.showCenter(true);
+                                    console.log(oPopup);
+                                }
                             }
                             else {
                                 nextStep(outerTransport);
