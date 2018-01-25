@@ -79,23 +79,5 @@ class Wirecard_CheckoutSeamless_Block_Additional_Installment extends Mage_Core_B
         return $this->getCustomerDobPart('dd');
     }
 
-    public function getPaymentProvider()
-    {
-        $installment = new Wirecard_CheckoutSeamless_Model_Installment();
-        return $installment->getConfigData('provider');
-    }
 
-    public function getConsumerDeviceId() {
-        $session = Mage::getModel('customer/session');
-
-        if (strlen($session->getData('wirecard_cs_consumerDeviceId'))) {
-            return $session->getData('wirecard_cs_consumerDeviceId');
-        }
-        else {
-            $timestamp = microtime();
-            $consumerDeviceId = md5(Mage::helper('wirecard_checkoutseamless')->getConfigData('settings/customer_id') . "_" . $timestamp);
-            $session->setData('wirecard_cs_consumerDeviceId', $consumerDeviceId);
-            return $consumerDeviceId;
-        }
-    }
 }
