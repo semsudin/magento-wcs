@@ -79,15 +79,11 @@ class Wirecard_CheckoutSeamless_Block_Seamless_Script extends Mage_Core_Block_Te
         $methods = array(array('value'=>'', 'label'=>Mage::helper('adminhtml')->__('--Please Select--')));
 
         foreach ($payments as $paymentCode=>$paymentModel) {
-            $paymentTitle = Mage::getStoreConfig('payment/'.$paymentCode.'/title');
-            $methods[$paymentCode] = array(
-                'label'   => $paymentTitle,
-                'value' => $paymentCode,
-            );
+            $methods[] = $paymentCode;
         }
 
-        $installment_active = in_array(array('label' => 'Installment', 'value' => 'wirecard_checkoutpage_installment'), $methods);
-        $invoice_active = in_array(array('label' => 'Invoice', 'value' => 'wirecard_checkoutpage_invoice'), $methods);
+        $installment_active = in_array('wirecard_checkoutpage_installment', $methods);
+        $invoice_active = in_array('wirecard_checkoutpage_invoice', $methods);
 
 
         return (($installment->getConfigData('provider') == "ratepay" && $installment_active) || ($invoice->getConfigData('provider') == "ratepay"  && $invoice_active));
