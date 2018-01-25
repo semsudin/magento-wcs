@@ -205,7 +205,7 @@
             <wirecard_checkoutseamless_sofortbanking>
                 <active>0</active>
                 <model>wirecard_checkoutseamless/sofortbanking</model>
-                <title>Pay now. Online bank transfer</title>
+                <title>Online bank transfer.</title>
                 <allowspecific>0</allowspecific>
             </wirecard_checkoutseamless_sofortbanking>
             <wirecard_checkoutseamless_skrillwallet>

@@ -777,7 +777,7 @@
                     </fields>
                 </wirecard_checkoutseamless_tatrapay>
                 <wirecard_checkoutseamless_sofortbanking translate="label" module="wirecard_checkoutseamless">
-                    <label>Wirecard Checkout Seamless Pay now. Online bank transfer</label>
+                    <label>Wirecard Checkout Seamless Online bank transfer.</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>5080</sort_order>
                     <show_in_default>1</show_in_default>
