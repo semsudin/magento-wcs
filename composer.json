@@ -1,6 +1,6 @@
 {
     "name": "wirecard/magento-wcs",
-    "license": "GPL-2.0",
+    "license": "GPL-2.0-only",
     "type": "magento-module",
     "description": "Wirecard Checkout Seamless extension for Magento",
     "keywords": ["wirecard", "checkout", "seamless", "payment", "pci-dss", "saq-a", "saq-a-ep", "magento"],

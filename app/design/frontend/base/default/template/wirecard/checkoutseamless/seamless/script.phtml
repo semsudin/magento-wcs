@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<?php if (strlen($this->getConsumerDeviceId())) { ?>
+<?php if (strlen($this->getConsumerDeviceId()) && $this->isRatepayPaymentProvider()) { ?>
     <!-- wirecard checkout seamless device id script -->
     <script language="JavaScript">
         var di = {t:'<?php echo $this->getConsumerDeviceId(); ?>',v:'WDWL',l:'Checkout'};

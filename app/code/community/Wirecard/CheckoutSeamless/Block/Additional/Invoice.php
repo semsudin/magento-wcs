@@ -73,4 +73,5 @@ class Wirecard_CheckoutSeamless_Block_Additional_Invoice extends Mage_Core_Block
     public function getCustomerDobDay() {
         return $this->getCustomerDobPart('dd');
     }
+
 }

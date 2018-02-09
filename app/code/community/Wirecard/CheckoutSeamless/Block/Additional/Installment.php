@@ -79,4 +79,5 @@ class Wirecard_CheckoutSeamless_Block_Additional_Installment extends Mage_Core_B
         return $this->getCustomerDobPart('dd');
     }
 
+
 }

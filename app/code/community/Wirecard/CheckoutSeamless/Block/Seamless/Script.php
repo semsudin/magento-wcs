@@ -70,6 +70,25 @@ class Wirecard_CheckoutSeamless_Block_Seamless_Script extends Mage_Core_Block_Te
         return $this->_dataStorageUrl;
     }
 
+    public function isRatepayPaymentProvider()
+    {
+        $installment = new Wirecard_CheckoutSeamless_Model_Installment();
+        $invoice = new Wirecard_CheckoutSeamless_Model_Invoice();
+
+        $payments = Mage::getSingleton('payment/config')->getActiveMethods();
+        $methods = array(array('value'=>'', 'label'=>Mage::helper('adminhtml')->__('--Please Select--')));
+
+        foreach ($payments as $paymentCode=>$paymentModel) {
+            $methods[] = $paymentCode;
+        }
+
+        $installment_active = in_array('wirecard_checkoutpage_installment', $methods);
+        $invoice_active = in_array('wirecard_checkoutpage_invoice', $methods);
+
+
+        return (($installment->getConfigData('provider') == "ratepay" && $installment_active) || ($invoice->getConfigData('provider') == "ratepay"  && $invoice_active));
+    }
+
     public function getConsumerDeviceId() {
         $session = Mage::getModel('customer/session');
 
