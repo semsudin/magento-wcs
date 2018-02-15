@@ -125,11 +125,16 @@ Event.observe(window, 'load', function () {
                                     window.location.href = innerResponse.url;
                                 }
                                 else {
+                                    var width = 500;
+                                    if (document.body.clientWidth < 500) {
+                                        width = document.body.clientWidth;
+                                    }
                                     var oPopup = new Window({
                                         id:'popup_window',
                                         className: 'magento',
+                                        windowClassName: 'magentopopup',
                                         url: innerResponse.url,
-                                        width: 500,
+                                        width: width,
                                         height: 500,
                                         minimizable: false,
                                         maximizable: false,
@@ -144,7 +149,7 @@ Event.observe(window, 'load', function () {
                                     });
                                     oPopup.setZIndex(100);
                                     oPopup.showCenter(true);
-                                    console.log(oPopup);
+                                    $('#popup_window_content').width(width);
                                 }
                             }
                             else {
