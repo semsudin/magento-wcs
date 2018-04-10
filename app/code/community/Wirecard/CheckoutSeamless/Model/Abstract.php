@@ -53,7 +53,7 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
     protected $_defaultLocale = 'en';
 
     protected $_order;
-    protected $_pluginVersion = '4.2.7';
+    protected $_pluginVersion = '4.2.8';
     protected $_pluginName = 'Wirecard/CheckoutSeamless';
 
     protected $_formBlockType = 'wirecard_checkoutseamless/form';
@@ -215,9 +215,13 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
             $bitem->setUnitGrossAmount(number_format($order->getShippingInclTax(), $precision, '.', ''));
             $bitem->setUnitNetAmount(number_format($order->getShippingAmount(), $precision, '.', ''));
             $bitem->setUnitTaxAmount(number_format($order->getShippingTaxAmount(), $precision, '.', ''));
+            $taxRate = 0;
+            if ($bitem->getUnitNetAmount() > 0) {
+                $taxRate = (($bitem->getUnitGrossAmount() / $bitem->getUnitNetAmount()) - 1) * 100;
+            }
             $bitem->setUnitTaxRate(
                 number_format(
-                    (($bitem->getUnitGrossAmount() / $bitem->getUnitNetAmount()) - 1) * 100,
+                    $taxRate,
                     $precision,
                     '.',
                     ''

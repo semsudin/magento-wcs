@@ -34,7 +34,7 @@
 <config>
     <modules>
         <Wirecard_CheckoutSeamless>
-            <version>4.2.7</version>
+            <version>4.2.8</version>
         </Wirecard_CheckoutSeamless>
     </modules>
     <global>
