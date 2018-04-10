@@ -216,7 +216,7 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
             $bitem->setUnitNetAmount(number_format($order->getShippingAmount(), $precision, '.', ''));
             $bitem->setUnitTaxAmount(number_format($order->getShippingTaxAmount(), $precision, '.', ''));
             $taxRate = 0;
-            if ($bitem->getUnitGrossAmount() / $bitem->getUnitNetAmount() > 0) {
+            if ($bitem->getUnitNetAmount() > 0) {
                 $taxRate = (($bitem->getUnitGrossAmount() / $bitem->getUnitNetAmount()) - 1) * 100;
             }
             $bitem->setUnitTaxRate(
