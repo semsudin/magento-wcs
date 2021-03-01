@@ -42,7 +42,7 @@ function toggleQentaCheckoutSeamlessIFrame() {
 }
 
 Event.observe(window, 'load', function () {
-    if (typeof QentaCEE_DataStorage == 'function') {
+    if (typeof WirecardCEE_DataStorage == 'function') {
 
         payment.save = payment.save.wrap(function (origSaveMethod) {
             if (this.currentMethod
@@ -174,7 +174,7 @@ qentaCheckoutSeamlessApplication.prototype = {
 
     sendRequest: function (data) {
 
-        var qentaCee = new QentaCEE_DataStorage;
+        var qentaCee = new WirecardCEE_DataStorage;
         var request = qentaCee.storePaymentInformation(data, function (response) {
 
             processResponse(response);
