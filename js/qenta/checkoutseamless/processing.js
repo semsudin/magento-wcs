@@ -29,7 +29,7 @@
  * Please do not use the plugin if you do not agree to these terms of use!
  */
 
-var wirecarcdCheckoutSeamlessResponseData = [];
+var qentaCheckoutSeamlessResponseData = [];
 
 function toggleQentaCheckoutSeamlessIFrame() {
     if ($('qenta-checkoutseamless-iframe-div')) {
@@ -71,8 +71,8 @@ Event.observe(window, 'load', function () {
                 }
 
                 if (paymentData === null
-                    || (typeof wirecarcdCheckoutSeamlessResponseData[this.currentMethod] !== 'undefined'
-                    && wirecarcdCheckoutSeamlessResponseData[this.currentMethod] !== false)) {
+                    || (typeof qentaCheckoutSeamlessResponseData[this.currentMethod] !== 'undefined'
+                    && qentaCheckoutSeamlessResponseData[this.currentMethod] !== false)) {
                     origSaveMethod();
                     return;
                 }
@@ -258,7 +258,7 @@ function processResponse(response) {
         }
 
         prepareSubmittedFields(response.response);
-        wirecarcdCheckoutSeamlessResponseData[payment.currentMethod] = true;
+        qentaCheckoutSeamlessResponseData[payment.currentMethod] = true;
     }
 }
 
@@ -280,7 +280,7 @@ function prepareSubmittedFields(response) {
         $$('#payment_form_' + payment.currentMethod + ' .no-submit').each(function (el) {
             el.observe('change', function (el) {
                 $(payment.currentMethod + '_new').value = '1';
-                wirecarcdCheckoutSeamlessResponseData[payment.currentMethod] = false;
+                qentaCheckoutSeamlessResponseData[payment.currentMethod] = false;
             });
         });
     }
@@ -329,7 +329,7 @@ function changePaymentData() {
             method: 'post',
             onSuccess: function () {
                 emptyHiddenFields();
-                wirecarcdCheckoutSeamlessResponseData[payment.currentMethod] = false;
+                qentaCheckoutSeamlessResponseData[payment.currentMethod] = false;
                 $(payment.currentMethod + '_new').value = '1';
                 $(payment.currentMethod + '_saved_data').hide();
                 $(payment.currentMethod + '_new_data').show();
