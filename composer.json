@@ -4,13 +4,13 @@
     "type": "magento-module",
     "description": "Qenta Checkout Seamless extension for Magento",
     "keywords": ["qenta", "checkout", "seamless", "payment", "pci-dss", "saq-a", "saq-a-ep", "magento"],
-    "homepage": "https://www.qenta.at",
+    "homepage": "https://www.qenta.com",
     "support": {
-        "email": "support.at@qenta.com",
+        "email": "support@qenta.com",
         "docs": "https://guides.qenta.com"
     },
     "require": {
-        "php": ">=5.3",
+        "php": ">=7.3",
         "magento-hackathon/magento-composer-installer": "*"
     }
 }
