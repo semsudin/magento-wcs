@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -34,12 +34,12 @@
 /**
  * Container class for consumerData
  *
- * @name WirecardCEE_Stdlib_ConsumerData
+ * @name QentaCEE_Stdlib_ConsumerData
  * @category WirecardCEE
- * @package WirecardCEE_Stdlib
+ * @package QentaCEE_Stdlib
  * @subpackage ConsumerData
  */
-class WirecardCEE_Stdlib_ConsumerData
+class QentaCEE_Stdlib_ConsumerData
 {
     /**
      *
@@ -127,7 +127,7 @@ class WirecardCEE_Stdlib_ConsumerData
      *
      * @param string $mailAddress
      *
-     * @return WirecardCEE_Stdlib_ConsumerData
+     * @return QentaCEE_Stdlib_ConsumerData
      */
     public function setEmail($mailAddress)
     {
@@ -141,7 +141,7 @@ class WirecardCEE_Stdlib_ConsumerData
      *
      * @param DateTime $birthDate
      *
-     * @return WirecardCEE_Stdlib_ConsumerData
+     * @return QentaCEE_Stdlib_ConsumerData
      */
     public function setBirthDate(DateTime $birthDate)
     {
@@ -155,7 +155,7 @@ class WirecardCEE_Stdlib_ConsumerData
      *
      * @param string $taxIdentificationNumber
      *
-     * @return WirecardCEE_Stdlib_ConsumerData
+     * @return QentaCEE_Stdlib_ConsumerData
      */
     public function setTaxIdentificationNumber($taxIdentificationNumber)
     {
@@ -169,7 +169,7 @@ class WirecardCEE_Stdlib_ConsumerData
      *
      * @param string $driversLicenseNumber
      *
-     * @return WirecardCEE_Stdlib_ConsumerData
+     * @return QentaCEE_Stdlib_ConsumerData
      */
     public function setDriversLicenseNumber($driversLicenseNumber)
     {
@@ -183,7 +183,7 @@ class WirecardCEE_Stdlib_ConsumerData
      *
      * @param string $driversLicenseCountry
      *
-     * @return WirecardCEE_Stdlib_ConsumerData
+     * @return QentaCEE_Stdlib_ConsumerData
      */
     public function setDriversLicenseCountry($driversLicenseCountry)
     {
@@ -197,7 +197,7 @@ class WirecardCEE_Stdlib_ConsumerData
      *
      * @param string $driversLicenseState
      *
-     * @return WirecardCEE_Stdlib_ConsumerData
+     * @return QentaCEE_Stdlib_ConsumerData
      */
     public function setDriversLicenseState($driversLicenseState)
     {
@@ -209,7 +209,7 @@ class WirecardCEE_Stdlib_ConsumerData
     /**
      * @param string $companyName
      *
-     * @return WirecardCEE_Stdlib_ConsumerData
+     * @return QentaCEE_Stdlib_ConsumerData
      */
     public function setCompanyName($companyName)
     {
@@ -221,7 +221,7 @@ class WirecardCEE_Stdlib_ConsumerData
     /**
      * @param string $companyVatId
      *
-     * @return WirecardCEE_Stdlib_ConsumerData
+     * @return QentaCEE_Stdlib_ConsumerData
      */
     public function setCompanyVatId($companyVatId)
     {
@@ -233,7 +233,7 @@ class WirecardCEE_Stdlib_ConsumerData
     /**
      * @param string $companyTradeRegistryNumber
      *
-     * @return WirecardCEE_Stdlib_ConsumerData
+     * @return QentaCEE_Stdlib_ConsumerData
      */
     public function setCompanyTradeRegistryNumber($companyTradeRegistryNumber)
     {
@@ -244,13 +244,13 @@ class WirecardCEE_Stdlib_ConsumerData
 
     /**
      * adds addressinformation to the consumerdata.
-     * used {@link WirecardCEE_Stdlib_ConsumerData::getData()}
+     * used {@link QentaCEE_Stdlib_ConsumerData::getData()}
      *
-     * @param WirecardCEE_Stdlib_ConsumerData_Address $address
+     * @param QentaCEE_Stdlib_ConsumerData_Address $address
      *
-     * @return WirecardCEE_Stdlib_ConsumerData
+     * @return QentaCEE_Stdlib_ConsumerData
      */
-    public function addAddressInformation(WirecardCEE_Stdlib_ConsumerData_Address $address)
+    public function addAddressInformation(QentaCEE_Stdlib_ConsumerData_Address $address)
     {
         $consumerData        = array_merge($this->_consumerData, $address->getData());
         $this->_consumerData = $consumerData;
@@ -263,7 +263,7 @@ class WirecardCEE_Stdlib_ConsumerData
      *
      * @param string $consumerIpAddress
      *
-     * @return WirecardCEE_Stdlib_ConsumerData
+     * @return QentaCEE_Stdlib_ConsumerData
      */
     public function setIpAddress($consumerIpAddress)
     {
@@ -277,7 +277,7 @@ class WirecardCEE_Stdlib_ConsumerData
      *
      * @param string $consumerUserAgent
      *
-     * @return WirecardCEE_Stdlib_ConsumerData
+     * @return QentaCEE_Stdlib_ConsumerData
      */
     public function setUserAgent($consumerUserAgent)
     {

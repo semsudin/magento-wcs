@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -31,13 +31,13 @@
  */
 
 /**
- * @name WirecardCEE_Stdlib_Client_ClientAbstract
+ * @name QentaCEE_Stdlib_Client_ClientAbstract
  * @category WirecardCEE
- * @package WirecardCEE_Stdlib
+ * @package QentaCEE_Stdlib
  * @subpackage Client
  * @abstract
  */
-abstract class WirecardCEE_Stdlib_Client_ClientAbstract
+abstract class QentaCEE_Stdlib_Client_ClientAbstract
 {
 
     /**
@@ -77,7 +77,7 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
     /**
      * Fingeprint order
      *
-     * @var WirecardCEE_Stdlib_FingerprintOrder
+     * @var QentaCEE_Stdlib_FingerprintOrder
      */
     protected $_fingerprintOrder;
 
@@ -98,14 +98,14 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
     /**
      * User configuration holder!
      *
-     * @var WirecardCEE_Stdlib_Config
+     * @var QentaCEE_Stdlib_Config
      */
     protected $oUserConfig;
 
     /**
      * Client configuration holder!
      *
-     * @var WirecardCEE_Stdlib_Config
+     * @var QentaCEE_Stdlib_Config
      */
     protected $oClientConfig;
 
@@ -224,7 +224,7 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
     /**
      * Must be implemented in the client object
      *
-     * @param array|WirecardCEE_Stdlib_Config $aConfig
+     * @param array|QentaCEE_Stdlib_Config $aConfig
      *
      * @abstract
      */
@@ -236,7 +236,7 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
      * otherwise the clientlibrary instantiates the Zend_Http_Client on its own.
      *
      * @param Zend_Http_Client $httpClient
-     * @return WirecardCEE_Stdlib_Client_ClientAbstract
+     * @return QentaCEE_Stdlib_Client_ClientAbstract
      */
     public function setZendHttpClient(Zend_Http_Client $httpClient)
     {
@@ -247,7 +247,7 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
     /**
      * Returns the user configuration object
      *
-     * @return WirecardCEE_Stdlib_Config
+     * @return QentaCEE_Stdlib_Config
      */
     public function getUserConfig()
     {
@@ -257,7 +257,7 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
     /**
      * Returns the client configuration object
      *
-     * @return WirecardCEE_Stdlib_Config
+     * @return QentaCEE_Stdlib_Config
      */
     public function getClientConfig()
     {
@@ -271,7 +271,7 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
      */
     public function getUserAgentString()
     {
-        $oClientConfig = new WirecardCEE_Stdlib_Config(WirecardCEE_Stdlib_Module::getClientConfig());
+        $oClientConfig = new QentaCEE_Stdlib_Config(QentaCEE_Stdlib_Module::getClientConfig());
 
         $sUserAgent = $this->_getUserAgent() . ";{$oClientConfig->MODULE_NAME};{$oClientConfig->MODULE_VERSION};";
 
@@ -326,7 +326,7 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
     /**
      * sends the request and returns the zend http response object instance
      *
-     * @throws WirecardCEE_Stdlib_Client_Exception_InvalidResponseException
+     * @throws QentaCEE_Stdlib_Client_Exception_InvalidResponseException
      * @return Zend_Http_Response
      */
     protected function _send()
@@ -341,7 +341,7 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
         try {
             $response = $this->_sendRequest();
         } catch (Zend_Http_Client_Exception $e) {
-            throw new WirecardCEE_Stdlib_Client_Exception_InvalidResponseException($e->getMessage(), $e->getCode(), $e);
+            throw new QentaCEE_Stdlib_Client_Exception_InvalidResponseException($e->getMessage(), $e->getCode(), $e);
         }
 
         return $response;
@@ -365,7 +365,7 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
         $fingerprintFields               = $this->_requestData;
         $fingerprintFields[self::SECRET] = $this->_secret;
 
-        return WirecardCEE_Stdlib_Fingerprint::generate($fingerprintFields, $oFingerprintOrder);
+        return QentaCEE_Stdlib_Fingerprint::generate($fingerprintFields, $oFingerprintOrder);
     }
 
     /**
@@ -387,10 +387,10 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
 
     /**
      * Setter for requestfield.
-     * Bare in mind that $this->_fingerprintOrder is an WirecardCEE_Stdlib_FingerprintOrder object which implements
+     * Bare in mind that $this->_fingerprintOrder is an QentaCEE_Stdlib_FingerprintOrder object which implements
      * the ArrayAccess interface meaning we can use the array annotation [] on an object
      *
-     * @see WirecardCEE_Stdlib_FingerprintOrder
+     * @see QentaCEE_Stdlib_FingerprintOrder
      *
      * @param string $name
      * @param mixed $value
@@ -435,7 +435,7 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
     /**
      * Sets shopping basket data to _requestData
      *
-     * @param WirecardCEE_Stdlib_Basket $basket
+     * @param QentaCEE_Stdlib_Basket $basket
      */
     protected function _setBasket($basket)
     {
@@ -451,7 +451,7 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
     /**
      * Appends basket to fingerprint order
      *
-     * @param WirecardCEE_Stdlib_Basket $basket
+     * @param QentaCEE_Stdlib_Basket $basket
      */
     protected function _appendBasketFingerprintOrder($basket)
     {
@@ -460,17 +460,17 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
         }
 
         $data = $basket->getData();
-        $this->_fingerprintOrder[] = WirecardCEE_Stdlib_Basket::BASKET_ITEMS;
-        for ($i = 1; $i <= (int)$data[WirecardCEE_Stdlib_Basket::BASKET_ITEMS]; $i++) {
-            $this->_fingerprintOrder[] = WirecardCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . WirecardCEE_Stdlib_Basket_Item::ITEM_ARTICLE_NUMBER;
-            $this->_fingerprintOrder[] = WirecardCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . WirecardCEE_Stdlib_Basket_Item::ITEM_QUANTITY;
-            $this->_fingerprintOrder[] = WirecardCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . WirecardCEE_Stdlib_Basket_Item::ITEM_DESCRIPTION;
-            $this->_fingerprintOrder[] = WirecardCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . WirecardCEE_Stdlib_Basket_Item::ITEM_NAME;
-            $this->_fingerprintOrder[] = WirecardCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . WirecardCEE_Stdlib_Basket_Item::ITEM_IMAGE_URL;
-            $this->_fingerprintOrder[] = WirecardCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . WirecardCEE_Stdlib_Basket_Item::ITEM_UNIT_GROSS_AMOUNT;
-            $this->_fingerprintOrder[] = WirecardCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . WirecardCEE_Stdlib_Basket_Item::ITEM_UNIT_NET_AMOUNT;
-            $this->_fingerprintOrder[] = WirecardCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . WirecardCEE_Stdlib_Basket_Item::ITEM_UNIT_TAX_AMOUNT;
-            $this->_fingerprintOrder[] = WirecardCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . WirecardCEE_Stdlib_Basket_Item::ITEM_UNIT_TAX_RATE;
+        $this->_fingerprintOrder[] = QentaCEE_Stdlib_Basket::BASKET_ITEMS;
+        for ($i = 1; $i <= (int)$data[QentaCEE_Stdlib_Basket::BASKET_ITEMS]; $i++) {
+            $this->_fingerprintOrder[] = QentaCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . QentaCEE_Stdlib_Basket_Item::ITEM_ARTICLE_NUMBER;
+            $this->_fingerprintOrder[] = QentaCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . QentaCEE_Stdlib_Basket_Item::ITEM_QUANTITY;
+            $this->_fingerprintOrder[] = QentaCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . QentaCEE_Stdlib_Basket_Item::ITEM_DESCRIPTION;
+            $this->_fingerprintOrder[] = QentaCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . QentaCEE_Stdlib_Basket_Item::ITEM_NAME;
+            $this->_fingerprintOrder[] = QentaCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . QentaCEE_Stdlib_Basket_Item::ITEM_IMAGE_URL;
+            $this->_fingerprintOrder[] = QentaCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . QentaCEE_Stdlib_Basket_Item::ITEM_UNIT_GROSS_AMOUNT;
+            $this->_fingerprintOrder[] = QentaCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . QentaCEE_Stdlib_Basket_Item::ITEM_UNIT_NET_AMOUNT;
+            $this->_fingerprintOrder[] = QentaCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . QentaCEE_Stdlib_Basket_Item::ITEM_UNIT_TAX_AMOUNT;
+            $this->_fingerprintOrder[] = QentaCEE_Stdlib_Basket::BASKET_ITEM_PREFIX . $i . QentaCEE_Stdlib_Basket_Item::ITEM_UNIT_TAX_RATE;
         }
     }
 
@@ -486,7 +486,7 @@ abstract class WirecardCEE_Stdlib_Client_ClientAbstract
             $uniqString = $this->generateUniqString(10);
         }
 
-        if ($paymenttype == WirecardCEE_Stdlib_PaymentTypeAbstract::POLI) {
+        if ($paymenttype == QentaCEE_Stdlib_PaymentTypeAbstract::POLI) {
             $customerStatement = $prefix;
         } else {
             $customerStatement = sprintf('%s Id:%s', $prefix, $uniqString);

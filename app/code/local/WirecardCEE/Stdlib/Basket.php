@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -32,12 +32,12 @@
 
 
 /**
- * @name WirecardCEE_Stdlib_Basket
+ * @name QentaCEE_Stdlib_Basket
  * @category WirecardCEE
- * @package WirecardCEE_Stdlib
+ * @package QentaCEE_Stdlib
  * @subpackage Basket
  */
-class WirecardCEE_Stdlib_Basket
+class QentaCEE_Stdlib_Basket
 {
 
     /**
@@ -74,12 +74,12 @@ class WirecardCEE_Stdlib_Basket
     /**
      * Adds item to the basket
      *
-     * @param WirecardCEE_Stdlib_Basket_Item $oItem
+     * @param QentaCEE_Stdlib_Basket_Item $oItem
      * @param int $iQuantity
      *
-     * @return WirecardCEE_Stdlib_Basket
+     * @return QentaCEE_Stdlib_Basket
      */
-    public function addItem(WirecardCEE_Stdlib_Basket_Item $oItem, $iQuantity = 1)
+    public function addItem(QentaCEE_Stdlib_Basket_Item $oItem, $iQuantity = 1)
     {
         $_mArticleNumber = $oItem->getArticleNumber();
         $_quantity       = $this->_getItemQuantity($_mArticleNumber);
@@ -112,15 +112,15 @@ class WirecardCEE_Stdlib_Basket
             $mArticleNumber = $oItem['instance']->getArticleNumber();
             $oItem          = $oItem['instance'];
 
-            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . WirecardCEE_Stdlib_Basket_Item::ITEM_ARTICLE_NUMBER]    = $mArticleNumber;
+            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . QentaCEE_Stdlib_Basket_Item::ITEM_ARTICLE_NUMBER]    = $mArticleNumber;
             $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . self::QUANTITY]                                         = $this->_getItemQuantity($mArticleNumber);
-            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . WirecardCEE_Stdlib_Basket_Item::ITEM_UNIT_GROSS_AMOUNT] = $oItem->getUnitGrossAmount();
-            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . WirecardCEE_Stdlib_Basket_Item::ITEM_UNIT_NET_AMOUNT]   = $oItem->getUnitNetAmount();
-            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . WirecardCEE_Stdlib_Basket_Item::ITEM_UNIT_TAX_AMOUNT]   = $oItem->getUnitTaxAmount();
-            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . WirecardCEE_Stdlib_Basket_Item::ITEM_UNIT_TAX_RATE]     = $oItem->getUnitTaxRate();
-            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . WirecardCEE_Stdlib_Basket_Item::ITEM_DESCRIPTION]       = $oItem->getDescription();
-            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . WirecardCEE_Stdlib_Basket_Item::ITEM_NAME]              = $oItem->getName();
-            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . WirecardCEE_Stdlib_Basket_Item::ITEM_IMAGE_URL]         = $oItem->getImageUrl();
+            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . QentaCEE_Stdlib_Basket_Item::ITEM_UNIT_GROSS_AMOUNT] = $oItem->getUnitGrossAmount();
+            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . QentaCEE_Stdlib_Basket_Item::ITEM_UNIT_NET_AMOUNT]   = $oItem->getUnitNetAmount();
+            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . QentaCEE_Stdlib_Basket_Item::ITEM_UNIT_TAX_AMOUNT]   = $oItem->getUnitTaxAmount();
+            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . QentaCEE_Stdlib_Basket_Item::ITEM_UNIT_TAX_RATE]     = $oItem->getUnitTaxRate();
+            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . QentaCEE_Stdlib_Basket_Item::ITEM_DESCRIPTION]       = $oItem->getDescription();
+            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . QentaCEE_Stdlib_Basket_Item::ITEM_NAME]              = $oItem->getName();
+            $this->_basket[self::BASKET_ITEM_PREFIX . $_counter . QentaCEE_Stdlib_Basket_Item::ITEM_IMAGE_URL]         = $oItem->getImageUrl();
 
             $_counter ++;
         }

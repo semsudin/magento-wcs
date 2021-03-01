@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -38,7 +38,7 @@
  *
  * ie.
  *
- * $obj = new WirecardCEE_Stdlib_FingerprintOrder();
+ * $obj = new QentaCEE_Stdlib_FingerprintOrder();
  * $obj->add('index') is same as $obj[] = 'index';
  *
  * 2. we can iterate it via foreach ie.
@@ -47,12 +47,12 @@
  * 3. and we can use count() on the whole object ie count($obj)
  * which will return the number of items in fingeprintOrder array
  *
- * @name WirecardCEE_Stdlib_FingerprintOrder
+ * @name QentaCEE_Stdlib_FingerprintOrder
  * @category WirecardCEE
- * @package WirecardCEE_Stdlib
+ * @package QentaCEE_Stdlib
  */
 
-class WirecardCEE_Stdlib_FingerprintOrder implements ArrayAccess, IteratorAggregate, Countable
+class QentaCEE_Stdlib_FingerprintOrder implements ArrayAccess, IteratorAggregate, Countable
 {
     /**
      *
@@ -67,14 +67,14 @@ class WirecardCEE_Stdlib_FingerprintOrder implements ArrayAccess, IteratorAggreg
      *
      * @param string|array $mItems
      *
-     * @throws WirecardCEE_Stdlib_Exception_InvalidArgumentException
+     * @throws QentaCEE_Stdlib_Exception_InvalidArgumentException
      */
     public function __construct($mItems = null)
     {
         $this->_fingeprintOrder = Array();
 
         if (!is_null($mItems) && !$this->setOrder($mItems)) {
-            throw new WirecardCEE_Stdlib_Exception_InvalidArgumentException(sprintf("Unknown fingerprint format in %s on line %s",
+            throw new QentaCEE_Stdlib_Exception_InvalidArgumentException(sprintf("Unknown fingerprint format in %s on line %s",
                 __METHOD__, __LINE__));
         }
     }

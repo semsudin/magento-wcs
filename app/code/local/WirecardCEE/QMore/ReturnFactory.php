@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -32,12 +32,12 @@
 
 
 /**
- * @name WirecardCEE_QMore_ReturnFactory
+ * @name QentaCEE_QMore_ReturnFactory
  * @category WirecardCEE
- * @package WirecardCEE_QMore
+ * @package QentaCEE_QMore
  * @subpackage Return
  */
-class WirecardCEE_QMore_ReturnFactory extends WirecardCEE_Stdlib_ReturnFactoryAbstract
+class QentaCEE_QMore_ReturnFactory extends QentaCEE_Stdlib_ReturnFactoryAbstract
 {
     /**
      * no initiation allowed.
@@ -50,19 +50,19 @@ class WirecardCEE_QMore_ReturnFactory extends WirecardCEE_Stdlib_ReturnFactoryAb
      * @param array $return - returned post data
      * @param string $secret - QMORE secret
      *
-     * @return WirecardCEE_QMore_Return_Cancel|WirecardCEE_QMore_Return_Failure|WirecardCEE_QMore_Return_Pending|WirecardCEE_QMore_Return_Success
-     * @throws WirecardCEE_QMore_Exception_InvalidResponseException
+     * @return QentaCEE_QMore_Return_Cancel|QentaCEE_QMore_Return_Failure|QentaCEE_QMore_Return_Pending|QentaCEE_QMore_Return_Success
+     * @throws QentaCEE_QMore_Exception_InvalidResponseException
      */
     public static function getInstance($return, $secret)
     {
         if (!is_array($return)) {
-            $return = WirecardCEE_Stdlib_SerialApi::decode($return);
+            $return = QentaCEE_Stdlib_SerialApi::decode($return);
         }
 
         if (array_key_exists('paymentState', $return)) {
             return self::_getInstance($return, $secret);
         } else {
-            throw new WirecardCEE_QMore_Exception_InvalidResponseException('Invalid response from QMORE. Paymentstate is missing.');
+            throw new QentaCEE_QMore_Exception_InvalidResponseException('Invalid response from QMORE. Paymentstate is missing.');
         }
     }
 
@@ -76,8 +76,8 @@ class WirecardCEE_QMore_ReturnFactory extends WirecardCEE_Stdlib_ReturnFactoryAb
      * @param array $return
      * @param string $secret
      *
-     * @throws WirecardCEE_QMore_Exception_InvalidResponseException
-     * @return WirecardCEE_QMore_Return_Cancel|WirecardCEE_QMore_Return_Failure|WirecardCEE_QMore_Return_Pending|WirecardCEE_QMore_Return_Success
+     * @throws QentaCEE_QMore_Exception_InvalidResponseException
+     * @return QentaCEE_QMore_Return_Cancel|QentaCEE_QMore_Return_Failure|QentaCEE_QMore_Return_Pending|QentaCEE_QMore_Return_Success
      */
     protected static function _getInstance($return, $secret)
     {
@@ -86,16 +86,16 @@ class WirecardCEE_QMore_ReturnFactory extends WirecardCEE_Stdlib_ReturnFactoryAb
                 return self::_getSuccessInstance($return, $secret);
                 break;
             case parent::STATE_CANCEL:
-                return new WirecardCEE_QMore_Return_Cancel($return);
+                return new QentaCEE_QMore_Return_Cancel($return);
                 break;
             case parent::STATE_FAILURE:
-                return new WirecardCEE_QMore_Return_Failure($return);
+                return new QentaCEE_QMore_Return_Failure($return);
                 break;
             case parent::STATE_PENDING:
-                return new WirecardCEE_QMore_Return_Pending($return, $secret);
+                return new QentaCEE_QMore_Return_Pending($return, $secret);
                 break;
             default:
-                throw new WirecardCEE_QMore_Exception_InvalidResponseException('Invalid response from QMORE. Unexpected paymentState: ' . $return['paymentState']);
+                throw new QentaCEE_QMore_Exception_InvalidResponseException('Invalid response from QMORE. Unexpected paymentState: ' . $return['paymentState']);
                 break;
         }
     }
@@ -106,35 +106,35 @@ class WirecardCEE_QMore_ReturnFactory extends WirecardCEE_Stdlib_ReturnFactoryAb
      * @param string[] $return
      * @param string $secret
      *
-     * @return WirecardCEE_QMore_Return_Success
-     * @throws WirecardCEE_QMore_Exception_InvalidResponseException
+     * @return QentaCEE_QMore_Return_Success
+     * @throws QentaCEE_QMore_Exception_InvalidResponseException
      */
     protected static function _getSuccessInstance($return, $secret)
     {
         if (!array_key_exists('paymentType', $return)) {
-            throw new WirecardCEE_QMore_Exception_InvalidResponseException('Invalid response from QMORE. Paymenttype is missing.');
+            throw new QentaCEE_QMore_Exception_InvalidResponseException('Invalid response from QMORE. Paymenttype is missing.');
         }
 
         switch (strtoupper($return['paymentType'])) {
-            case WirecardCEE_Stdlib_PaymentTypeAbstract::CCARD:
-            case WirecardCEE_Stdlib_PaymentTypeAbstract::CCARD_MOTO:
-            case WirecardCEE_Stdlib_PaymentTypeAbstract::MAESTRO:
-                return new WirecardCEE_QMore_Return_Success_CreditCard($return, $secret);
+            case QentaCEE_Stdlib_PaymentTypeAbstract::CCARD:
+            case QentaCEE_Stdlib_PaymentTypeAbstract::CCARD_MOTO:
+            case QentaCEE_Stdlib_PaymentTypeAbstract::MAESTRO:
+                return new QentaCEE_QMore_Return_Success_CreditCard($return, $secret);
                 break;
-            case WirecardCEE_Stdlib_PaymentTypeAbstract::PAYPAL:
-                return new WirecardCEE_QMore_Return_Success_PayPal($return, $secret);
+            case QentaCEE_Stdlib_PaymentTypeAbstract::PAYPAL:
+                return new QentaCEE_QMore_Return_Success_PayPal($return, $secret);
                 break;
-            case WirecardCEE_Stdlib_PaymentTypeAbstract::SOFORTUEBERWEISUNG:
-                return new WirecardCEE_QMore_Return_Success_Sofortueberweisung($return, $secret);
+            case QentaCEE_Stdlib_PaymentTypeAbstract::SOFORTUEBERWEISUNG:
+                return new QentaCEE_QMore_Return_Success_Sofortueberweisung($return, $secret);
                 break;
-            case WirecardCEE_Stdlib_PaymentTypeAbstract::IDL:
-                return new WirecardCEE_QMore_Return_Success_Ideal($return, $secret);
+            case QentaCEE_Stdlib_PaymentTypeAbstract::IDL:
+                return new QentaCEE_QMore_Return_Success_Ideal($return, $secret);
                 break;
-            case WirecardCEE_Stdlib_PaymentTypeAbstract::SEPADD:
-                return new WirecardCEE_QMore_Return_Success_SepaDD($return, $secret);
+            case QentaCEE_Stdlib_PaymentTypeAbstract::SEPADD:
+                return new QentaCEE_QMore_Return_Success_SepaDD($return, $secret);
                 break;
             default:
-                return new WirecardCEE_QMore_Return_Success($return, $secret);
+                return new QentaCEE_QMore_Return_Success($return, $secret);
                 break;
         }
     }

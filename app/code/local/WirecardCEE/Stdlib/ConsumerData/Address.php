@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -34,12 +34,12 @@
 /**
  * Container class for consumerData
  *
- * @name WirecardCEE_Stdlib_ConsumerData
+ * @name QentaCEE_Stdlib_ConsumerData
  * @category WirecardCEE
- * @package WirecardCEE_Stdlib
+ * @package QentaCEE_Stdlib
  * @subpackage ConsumerData
  */
-class WirecardCEE_Stdlib_ConsumerData_Address
+class QentaCEE_Stdlib_ConsumerData_Address
 {
     /**
      * Constant: Shipping
@@ -158,7 +158,7 @@ class WirecardCEE_Stdlib_ConsumerData_Address
     protected $_addressData = Array();
 
     /**
-     * creates an instance of the WirecardCEE_Stdlib_ConsumerData_Address object.
+     * creates an instance of the QentaCEE_Stdlib_ConsumerData_Address object.
      * addressType should be Shipping or Billing.
      *
      * @param string $addressType
@@ -173,7 +173,7 @@ class WirecardCEE_Stdlib_ConsumerData_Address
      *
      * @param string $firstname
      *
-     * @return WirecardCEE_Stdlib_ConsumerData_Address
+     * @return QentaCEE_Stdlib_ConsumerData_Address
      */
     public function setFirstname($firstname)
     {
@@ -187,7 +187,7 @@ class WirecardCEE_Stdlib_ConsumerData_Address
      *
      * @param string $lastname
      *
-     * @return WirecardCEE_Stdlib_ConsumerData_Address
+     * @return QentaCEE_Stdlib_ConsumerData_Address
      */
     public function setLastname($lastname)
     {
@@ -201,7 +201,7 @@ class WirecardCEE_Stdlib_ConsumerData_Address
      *
      * @param string $address1
      *
-     * @return WirecardCEE_Stdlib_ConsumerData_Address
+     * @return QentaCEE_Stdlib_ConsumerData_Address
      */
     public function setAddress1($address1)
     {
@@ -215,7 +215,7 @@ class WirecardCEE_Stdlib_ConsumerData_Address
      *
      * @param string $address2
      *
-     * @return WirecardCEE_Stdlib_ConsumerData_Address
+     * @return QentaCEE_Stdlib_ConsumerData_Address
      */
     public function setAddress2($address2)
     {
@@ -229,7 +229,7 @@ class WirecardCEE_Stdlib_ConsumerData_Address
      *
      * @param string $city
      *
-     * @return WirecardCEE_Stdlib_ConsumerData_Address
+     * @return QentaCEE_Stdlib_ConsumerData_Address
      */
     public function setCity($city)
     {
@@ -243,7 +243,7 @@ class WirecardCEE_Stdlib_ConsumerData_Address
      *
      * @param string $country
      *
-     * @return WirecardCEE_Stdlib_ConsumerData_Address
+     * @return QentaCEE_Stdlib_ConsumerData_Address
      */
     public function setCountry($country)
     {
@@ -257,7 +257,7 @@ class WirecardCEE_Stdlib_ConsumerData_Address
      *
      * @param string $state
      *
-     * @return WirecardCEE_Stdlib_ConsumerData_Address
+     * @return QentaCEE_Stdlib_ConsumerData_Address
      */
     public function setState($state)
     {
@@ -271,7 +271,7 @@ class WirecardCEE_Stdlib_ConsumerData_Address
      *
      * @param string $zipCode
      *
-     * @return WirecardCEE_Stdlib_ConsumerData_Address
+     * @return QentaCEE_Stdlib_ConsumerData_Address
      */
     public function setZipCode($zipCode)
     {
@@ -285,7 +285,7 @@ class WirecardCEE_Stdlib_ConsumerData_Address
      *
      * @param string $phone
      *
-     * @return WirecardCEE_Stdlib_ConsumerData_Address
+     * @return QentaCEE_Stdlib_ConsumerData_Address
      */
     public function setPhone($phone)
     {
@@ -299,7 +299,7 @@ class WirecardCEE_Stdlib_ConsumerData_Address
      *
      * @param string $fax
      *
-     * @return WirecardCEE_Stdlib_ConsumerData_Address
+     * @return QentaCEE_Stdlib_ConsumerData_Address
      */
     public function setFax($fax)
     {

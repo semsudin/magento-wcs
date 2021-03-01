@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -31,12 +31,12 @@
  */
 
 /**
- * @name WirecardCEE_QMore_DataStorage_Request_Read
+ * @name QentaCEE_QMore_DataStorage_Request_Read
  * @category WirecardCEE
- * @package WirecardCEE_QMore
+ * @package QentaCEE_QMore
  * @subpackage DataStorage_Request
  */
-class WirecardCEE_QMore_DataStorage_Request_Read extends WirecardCEE_Stdlib_Client_ClientAbstract
+class QentaCEE_QMore_DataStorage_Request_Read extends QentaCEE_Stdlib_Client_ClientAbstract
 {
     /**
      * Storage ID field name
@@ -56,15 +56,15 @@ class WirecardCEE_QMore_DataStorage_Request_Read extends WirecardCEE_Stdlib_Clie
      *
      * @param array $aConfig
      *
-     * @throws WirecardCEE_QMore_Exception_InvalidArgumentException
+     * @throws QentaCEE_QMore_Exception_InvalidArgumentException
      */
     public function __construct($aConfig = null)
     {
-        $this->_fingerprintOrder = new WirecardCEE_Stdlib_FingerprintOrder();
+        $this->_fingerprintOrder = new QentaCEE_Stdlib_FingerprintOrder();
 
         //if no config was sent fallback to default config file
         if (is_null($aConfig)) {
-            $aConfig = WirecardCEE_QMore_Module::getConfig();
+            $aConfig = QentaCEE_QMore_Module::getConfig();
         }
 
         if (isset( $aConfig['WirecardCEEQMoreConfig'] )) {
@@ -73,8 +73,8 @@ class WirecardCEE_QMore_DataStorage_Request_Read extends WirecardCEE_Stdlib_Clie
         }
 
         //let's store configuration details in internal objects
-        $this->oUserConfig   = new WirecardCEE_Stdlib_Config($aConfig);
-        $this->oClientConfig = new WirecardCEE_Stdlib_Config(WirecardCEE_QMore_Module::getClientConfig());
+        $this->oUserConfig   = new QentaCEE_Stdlib_Config($aConfig);
+        $this->oClientConfig = new QentaCEE_Stdlib_Config(QentaCEE_QMore_Module::getClientConfig());
 
         //now let's check if the CUSTOMER_ID, SHOP_ID, LANGUAGE and SECRET exist in $this->oUserConfig object that we created from config array
         $sCustomerId = isset( $this->oUserConfig->CUSTOMER_ID ) ? trim($this->oUserConfig->CUSTOMER_ID) : null;
@@ -85,17 +85,17 @@ class WirecardCEE_QMore_DataStorage_Request_Read extends WirecardCEE_Stdlib_Clie
 
         //If not throw the InvalidArgumentException exception!
         if (empty( $sCustomerId ) || is_null($sCustomerId)) {
-            throw new WirecardCEE_QMore_DataStorage_Exception_InvalidArgumentException(sprintf('CUSTOMER_ID passed to %s is invalid.',
+            throw new QentaCEE_QMore_DataStorage_Exception_InvalidArgumentException(sprintf('CUSTOMER_ID passed to %s is invalid.',
                 __METHOD__));
         }
 
         if (empty( $sLanguage ) || is_null($sLanguage)) {
-            throw new WirecardCEE_QMore_DataStorage_Exception_InvalidArgumentException(sprintf('LANGUAGE passed to %s is invalid.',
+            throw new QentaCEE_QMore_DataStorage_Exception_InvalidArgumentException(sprintf('LANGUAGE passed to %s is invalid.',
                 __METHOD__));
         }
 
         if (empty( $sSecret ) || is_null($sSecret)) {
-            throw new WirecardCEE_QMore_DataStorage_Exception_InvalidArgumentException(sprintf('SECRET passed to %s is invalid.',
+            throw new QentaCEE_QMore_DataStorage_Exception_InvalidArgumentException(sprintf('SECRET passed to %s is invalid.',
                 __METHOD__));
         }
 
@@ -110,7 +110,7 @@ class WirecardCEE_QMore_DataStorage_Request_Read extends WirecardCEE_Stdlib_Clie
      *
      * @param mixed $storageId
      *
-     * @return WirecardCEE_QMore_DataStorage_Response_Read
+     * @return QentaCEE_QMore_DataStorage_Response_Read
      */
     public function read($storageId)
     {
@@ -123,11 +123,11 @@ class WirecardCEE_QMore_DataStorage_Request_Read extends WirecardCEE_Stdlib_Clie
             self::SECRET
         ));
 
-        return new WirecardCEE_QMore_DataStorage_Response_Read($this->_send());
+        return new QentaCEE_QMore_DataStorage_Response_Read($this->_send());
     }
 
     /**
-     * @see WirecardCEE_Stdlib_Client_ClientAbstract::_getRequestUrl()
+     * @see QentaCEE_Stdlib_Client_ClientAbstract::_getRequestUrl()
      * @return string
      */
     protected function _getRequestUrl()

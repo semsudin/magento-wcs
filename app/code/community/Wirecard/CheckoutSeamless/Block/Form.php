@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -30,22 +30,22 @@
  * Please do not use the plugin if you do not agree to these terms of use!
  */
 
-class Wirecard_CheckoutSeamless_Block_Form extends Mage_Payment_Block_Form
+class Qenta_CheckoutSeamless_Block_Form extends Mage_Payment_Block_Form
 {
     protected function _construct()
     {
         parent::_construct();
-        $this->setTemplate('wirecard/checkoutseamless/form.phtml');
+        $this->setTemplate('qenta/checkoutseamless/form.phtml');
     }
 
     protected function getImageName()
     {
-        return preg_replace('/^wirecard_checkoutseamless_/', '', $this->getMethodCode());
+        return preg_replace('/^qenta_checkoutseamless_/', '', $this->getMethodCode());
     }
 
     public function getMethodLabelAfterHtml()
     {
-        $filename = sprintf('images/wirecard/checkoutseamless/%s.png', $this->getImageName());
+        $filename = sprintf('images/qenta/checkoutseamless/%s.png', $this->getImageName());
         $filePath = sprintf('%s/frontend/base/default/%s', Mage::getBaseDir('skin'), $filename);
         if (file_exists($filePath)) {
             return sprintf('<img src="%s" title="%s" alt="%s" style="margin-right: 10px;"/>',
@@ -68,13 +68,13 @@ class Wirecard_CheckoutSeamless_Block_Form extends Mage_Payment_Block_Form
         $paymentType = strtoupper($this->getMethodCode());
         switch ($paymentType) {
             case 'WIRECARD_CHECKOUTSEAMLESS_INVOICE':
-                return 'wirecard_checkoutseamless/additional_Invoice';
+                return 'qenta_checkoutseamless/additional_Invoice';
                 break;
             case 'WIRECARD_CHECKOUTSEAMLESS_INSTALLMENT':
-                return 'wirecard_checkoutseamless/additional_Installment';
+                return 'qenta_checkoutseamless/additional_Installment';
                 break;
             case 'WIRECARD_CHECKOUTSEAMLESS_INVOICEB2B':
-                return 'wirecard_checkoutseamless/additional_InvoiceB2b';
+                return 'qenta_checkoutseamless/additional_InvoiceB2b';
                 break;
             default:
                 return false;
@@ -88,27 +88,27 @@ class Wirecard_CheckoutSeamless_Block_Form extends Mage_Payment_Block_Form
         switch($paymentType)
         {
             case 'CC':
-                return 'wirecard_checkoutseamless/seamless_Cc';
+                return 'qenta_checkoutseamless/seamless_Cc';
             case 'CCMOTO':
-                return 'wirecard_checkoutseamless/seamless_Cc';
+                return 'qenta_checkoutseamless/seamless_Cc';
             case 'SEPADD':
-                return 'wirecard_checkoutseamless/seamless_SepaDd';
+                return 'qenta_checkoutseamless/seamless_SepaDd';
             case 'PAYBOX':
-                return 'wirecard_checkoutseamless/seamless_Paybox';
+                return 'qenta_checkoutseamless/seamless_Paybox';
             case 'GIROPAY':
-                return 'wirecard_checkoutseamless/seamless_Giropay';
+                return 'qenta_checkoutseamless/seamless_Giropay';
             case 'MAESTRO':
-                return 'wirecard_checkoutseamless/seamless_Cc';
+                return 'qenta_checkoutseamless/seamless_Cc';
             case 'EPS':
-                return 'wirecard_checkoutseamless/seamless_Eps';
+                return 'qenta_checkoutseamless/seamless_Eps';
             case 'TRUSTPAY':
-                return 'wirecard_checkoutseamless/seamless_Trustpay';
+                return 'qenta_checkoutseamless/seamless_Trustpay';
             case 'VOUCHER':
-                return 'wirecard_checkoutseamless/seamless_Voucher';
+                return 'qenta_checkoutseamless/seamless_Voucher';
             case 'IDEAL':
-                return 'wirecard_checkoutseamless/seamless_Ideal';
+                return 'qenta_checkoutseamless/seamless_Ideal';
             default:
-                return 'wirecard_checkoutseamless/seamless_Base';
+                return 'qenta_checkoutseamless/seamless_Base';
         }
     }
 
@@ -117,15 +117,15 @@ class Wirecard_CheckoutSeamless_Block_Form extends Mage_Payment_Block_Form
         if ($this->getMethod()->getConfigData('provider') != 'payolution')
             return false;
 
-        /** @var Wirecard_CheckoutSeamless_Helper_Data $helper */
-        $helper = Mage::helper('wirecard_checkoutseamless');
+        /** @var Qenta_CheckoutSeamless_Helper_Data $helper */
+        $helper = Mage::helper('qenta_checkoutseamless');
         return $helper->getConfigData('options/payolution_terms');
     }
 
     public function getPayolutionLink()
     {
-        /** @var Wirecard_CheckoutSeamless_Helper_Data $helper */
-        $helper = Mage::helper('wirecard_checkoutseamless');
+        /** @var Qenta_CheckoutSeamless_Helper_Data $helper */
+        $helper = Mage::helper('qenta_checkoutseamless');
         $mId = base64_encode($helper->getConfigData('options/payolution_mid'));
 
         if (strlen($mId)) {

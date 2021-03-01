@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -32,12 +32,12 @@
 
 
 /**
- * @name WirecardCEE_Stdlib_Basket_Item
+ * @name QentaCEE_Stdlib_Basket_Item
  * @category WirecardCEE
- * @package WirecardCEE_Stdlib
+ * @package QentaCEE_Stdlib
  * @subpackage Basket
  */
-class WirecardCEE_Stdlib_Basket_Item
+class QentaCEE_Stdlib_Basket_Item
 {
 
     /**
@@ -78,7 +78,7 @@ class WirecardCEE_Stdlib_Basket_Item
      * Sets the item tax amount
      *
      * @param mixed(integer|float) $fTaxAmount
-     * @return WirecardCEE_Stdlib_Basket_Item
+     * @return QentaCEE_Stdlib_Basket_Item
      */
     public function setUnitTaxAmount($fTaxAmount)
     {
@@ -100,7 +100,7 @@ class WirecardCEE_Stdlib_Basket_Item
      * Sets the item tax rate
      *
      * @param mixed(integer|float) $fTaxRate
-     * @return WirecardCEE_Stdlib_Basket_Item
+     * @return QentaCEE_Stdlib_Basket_Item
      */
     public function setUnitTaxRate($fTaxRate)
     {
@@ -123,7 +123,7 @@ class WirecardCEE_Stdlib_Basket_Item
      *
      * @param mixed(string|integer) $mArticleNumber
      *
-     * @return WirecardCEE_Stdlib_Basket_Item
+     * @return QentaCEE_Stdlib_Basket_Item
      */
     public function setArticleNumber($mArticleNumber)
     {
@@ -146,7 +146,7 @@ class WirecardCEE_Stdlib_Basket_Item
      * Sets the gross amount for a unit
      *
      * @param mixed(integer|float) $fAmount
-     * @return WirecardCEE_Stdlib_Basket_Item
+     * @return QentaCEE_Stdlib_Basket_Item
      */
     public function setUnitGrossAmount($fAmount)
     {
@@ -168,7 +168,7 @@ class WirecardCEE_Stdlib_Basket_Item
      * Sets the net amount for a unit
      *
      * @param mixed(integer|float) $fAmount
-     * @return WirecardCEE_Stdlib_Basket_Item
+     * @return QentaCEE_Stdlib_Basket_Item
      */
     public function setUnitNetAmount($fAmount)
     {
@@ -191,7 +191,7 @@ class WirecardCEE_Stdlib_Basket_Item
      *
      * @param string $sDescription
      *
-     * @return WirecardCEE_Stdlib_Basket_Item
+     * @return QentaCEE_Stdlib_Basket_Item
      */
     public function setDescription($sDescription)
     {
@@ -217,7 +217,7 @@ class WirecardCEE_Stdlib_Basket_Item
      * Sets the item name
      *
      * @param string $sName
-     * @return WirecardCEE_Stdlib_Basket_Item
+     * @return QentaCEE_Stdlib_Basket_Item
      */
     public function setName($sName) {
         $this->_setField(self::ITEM_NAME, (string) $sName);
@@ -239,7 +239,7 @@ class WirecardCEE_Stdlib_Basket_Item
      * Sets the item image url
      *
      * @param string $sImageUrl
-     * @return WirecardCEE_Stdlib_Basket_Item
+     * @return QentaCEE_Stdlib_Basket_Item
      */
     public function setImageUrl($sImageUrl) {
         $this->_setField(self::ITEM_IMAGE_URL, (string) $sImageUrl);

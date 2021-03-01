@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -32,24 +32,24 @@
 
 
 /**
- * @name WirecardCEE_QMore_Response_Backend_Order
+ * @name QentaCEE_QMore_Response_Backend_Order
  * @category WirecardCEE
- * @package WirecardCEE_QMore
+ * @package QentaCEE_QMore
  * @subpackage Response_Backend
  */
-class WirecardCEE_QMore_Response_Backend_Order extends WirecardCEE_QMore_Response_Backend_FinancialObject
+class QentaCEE_QMore_Response_Backend_Order extends QentaCEE_QMore_Response_Backend_FinancialObject
 {
     /**
-     * Internal WirecardCEE_QMore_Response_Backend_Order_CreditIterator holder
+     * Internal QentaCEE_QMore_Response_Backend_Order_CreditIterator holder
      *
-     * @var WirecardCEE_QMore_Response_Backend_Order_CreditIterator
+     * @var QentaCEE_QMore_Response_Backend_Order_CreditIterator
      */
     private $_credits;
 
     /**
-     * internal WirecardCEE_QMore_Response_Backend_Order_PaymentIterator holder
+     * internal QentaCEE_QMore_Response_Backend_Order_PaymentIterator holder
      *
-     * @var WirecardCEE_QMore_Response_Backend_Order_PaymentIterator
+     * @var QentaCEE_QMore_Response_Backend_Order_PaymentIterator
      */
     private $_payments;
 
@@ -214,7 +214,7 @@ class WirecardCEE_QMore_Response_Backend_Order extends WirecardCEE_QMore_Respons
     private static $PAYMENTTYPE_IDEAL = 'IDL';
 
     /**
-     * creates an instance of the WirecardCEE_QMore_Response_Backend_Order object
+     * creates an instance of the QentaCEE_QMore_Response_Backend_Order object
      *
      * @param string[] $orderData
      */
@@ -404,7 +404,7 @@ class WirecardCEE_QMore_Response_Backend_Order extends WirecardCEE_QMore_Respons
     /**
      * getter for corresponding payment objects
      *
-     * @return WirecardCEE_QMore_Response_Backend_Order_PaymentIterator
+     * @return QentaCEE_QMore_Response_Backend_Order_PaymentIterator
      */
     public function getPayments()
     {
@@ -414,7 +414,7 @@ class WirecardCEE_QMore_Response_Backend_Order extends WirecardCEE_QMore_Respons
     /**
      * getter for corresponding credit objects
      *
-     * @return WirecardCEE_QMore_Response_Backend_Order_CreditIterator
+     * @return QentaCEE_QMore_Response_Backend_Order_CreditIterator
      */
     public function getCredits()
     {
@@ -432,20 +432,20 @@ class WirecardCEE_QMore_Response_Backend_Order extends WirecardCEE_QMore_Respons
         foreach ($paymentEntries as $paymentEntry) {
             switch ($paymentEntry['paymentType']) {
                 case self::$PAYMENTTYPE_PAYPAL:
-                    $payments[] = new WirecardCEE_QMore_Response_Backend_Order_Payment_Paypal($paymentEntry);
+                    $payments[] = new QentaCEE_QMore_Response_Backend_Order_Payment_Paypal($paymentEntry);
                     break;
                 case self::$PAYMENTTYPE_SOFORTUEBERWEISUNG:
-                    $payments[] = new WirecardCEE_QMore_Response_Backend_Order_Payment_Sofortueberweisung($paymentEntry);
+                    $payments[] = new QentaCEE_QMore_Response_Backend_Order_Payment_Sofortueberweisung($paymentEntry);
                     break;
                 case self::$PAYMENTTYPE_IDEAL:
-                    $payments[] = new WirecardCEE_QMore_Response_Backend_Order_Payment_Ideal($paymentEntry);
+                    $payments[] = new QentaCEE_QMore_Response_Backend_Order_Payment_Ideal($paymentEntry);
                     break;
                 default:
-                    $payments[] = new WirecardCEE_QMore_Response_Backend_Order_Payment($paymentEntry);
+                    $payments[] = new QentaCEE_QMore_Response_Backend_Order_Payment($paymentEntry);
                     break;
             }
         }
-        $this->_payments = new WirecardCEE_QMore_Response_Backend_Order_PaymentIterator($payments);
+        $this->_payments = new QentaCEE_QMore_Response_Backend_Order_PaymentIterator($payments);
     }
 
     /**
@@ -457,9 +457,9 @@ class WirecardCEE_QMore_Response_Backend_Order extends WirecardCEE_QMore_Respons
     {
         $credits = Array();
         foreach ($creditEntries as $creditEntry) {
-            $credits[] = new WirecardCEE_QMore_Response_Backend_Order_Credit($creditEntry);
+            $credits[] = new QentaCEE_QMore_Response_Backend_Order_Credit($creditEntry);
         }
-        $this->_credits = new WirecardCEE_QMore_Response_Backend_Order_CreditIterator($credits);
+        $this->_credits = new QentaCEE_QMore_Response_Backend_Order_CreditIterator($credits);
     }
 
 }

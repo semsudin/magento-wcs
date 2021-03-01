@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -33,13 +33,13 @@
 
 
 /**
- * @name WirecardCEE_Stdlib_Return_ReturnAbstract
+ * @name QentaCEE_Stdlib_Return_ReturnAbstract
  * @category WirecardCEE
- * @package WirecardCEE_Stdlib
+ * @package QentaCEE_Stdlib
  * @subpackage Return
  * @abstract
  */
-abstract class WirecardCEE_Stdlib_Return_ReturnAbstract
+abstract class QentaCEE_Stdlib_Return_ReturnAbstract
 {
     /**
      * Return data holder
@@ -93,7 +93,7 @@ abstract class WirecardCEE_Stdlib_Return_ReturnAbstract
         // Iterate thru all the validators and validate every one of them
         foreach ($this->_validators as $param => $aValidator) {
             foreach ($aValidator as $oValidator) {
-                /** @var WirecardCEE_Stdlib_Validate_ValidateAbstract $oValidator */
+                /** @var QentaCEE_Stdlib_Validate_ValidateAbstract $oValidator */
                 $param = (string) $param;
 
                 if (!isset( $this->_returnData[$param] )) {
@@ -115,7 +115,7 @@ abstract class WirecardCEE_Stdlib_Return_ReturnAbstract
      *
      * @param Zend_Validate_Abstract $oValidator
      * @param string $param
-     * @return WirecardCEE_Stdlib_Return_ReturnAbstract
+     * @return QentaCEE_Stdlib_Return_ReturnAbstract
      */
     public function addValidator(Zend_Validate_Abstract $oValidator, $param)
     {

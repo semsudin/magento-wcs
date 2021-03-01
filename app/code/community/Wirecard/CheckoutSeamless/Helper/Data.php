@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -30,7 +30,7 @@
  * Please do not use the plugin if you do not agree to these terms of use!
  */
 
-class Wirecard_CheckoutSeamless_Helper_Data extends Mage_Payment_Helper_Data
+class Qenta_CheckoutSeamless_Helper_Data extends Mage_Payment_Helper_Data
 {
 
     protected $_pluginVersion = '4.2.8';
@@ -87,13 +87,13 @@ class Wirecard_CheckoutSeamless_Helper_Data extends Mage_Payment_Helper_Data
 
     public function getConfigData($field = null, $storeId = null)
     {
-        $type =  Mage::getStoreConfig('wirecard_checkoutseamless/settings/configuration', $storeId);
+        $type =  Mage::getStoreConfig('qenta_checkoutseamless/settings/configuration', $storeId);
 
         if (isset($this->_presets[$type]) && isset($this->_presets[$type][$field])) {
             return $this->_presets[$type][$field];
         }
 
-        $path = 'wirecard_checkoutseamless';
+        $path = 'qenta_checkoutseamless';
         if ($field !== null) {
             $path .= '/' . $field;
         }
@@ -139,7 +139,7 @@ class Wirecard_CheckoutSeamless_Helper_Data extends Mage_Payment_Helper_Data
 
     public function getPluginVersion()
     {
-        return WirecardCEE_QMore_FrontendClient::generatePluginVersion('Magento', Mage::getVersion(),
+        return QentaCEE_QMore_FrontendClient::generatePluginVersion('Magento', Mage::getVersion(),
             $this->_pluginName, $this->_pluginVersion);
     }
 
@@ -149,17 +149,17 @@ class Wirecard_CheckoutSeamless_Helper_Data extends Mage_Payment_Helper_Data
             $level = Zend_Log::INFO;
         }
 
-        Mage::log($message, $level, 'wirecard_checkoutseamless.log', true);
+        Mage::log($message, $level, 'qenta_checkoutseamless.log', true);
     }
 
     /**
-     * @return bool|null|WirecardCEE_QMore_DataStorage_Response_Initiation
+     * @return bool|null|QentaCEE_QMore_DataStorage_Response_Initiation
      */
     public function initDatastorage()
     {
-        $dataStorageInit = new WirecardCEE_QMore_DataStorageClient($this->getConfigArray());
+        $dataStorageInit = new QentaCEE_QMore_DataStorageClient($this->getConfigArray());
 
-        $dataStorageInit->setReturnUrl(Mage::getUrl('wirecard_checkoutseamless/processing/storereturn',
+        $dataStorageInit->setReturnUrl(Mage::getUrl('qenta_checkoutseamless/processing/storereturn',
             array('_secure' => true)));
         $dataStorageInit->setOrderIdent(Mage::getSingleton('checkout/session')->getQuote()->getId());
 
@@ -181,7 +181,7 @@ class Wirecard_CheckoutSeamless_Helper_Data extends Mage_Payment_Helper_Data
 
         try {
             $response = $dataStorageInit->initiate();
-            if ($response->getStatus() == WirecardCEE_QMore_DataStorage_Response_Initiation::STATE_SUCCESS) {
+            if ($response->getStatus() == QentaCEE_QMore_DataStorage_Response_Initiation::STATE_SUCCESS) {
 
                 Mage::getSingleton('checkout/session')->setWirecardCheckoutSeamlessStorageId($response->getStorageId());
                 $this->log(__METHOD__ . ':storageid:' . $response->getStorageId(), Zend_Log::DEBUG);
@@ -208,7 +208,7 @@ class Wirecard_CheckoutSeamless_Helper_Data extends Mage_Payment_Helper_Data
     }
 
     /**
-     * @return bool|WirecardCEE_QMore_DataStorage_Response_Read
+     * @return bool|QentaCEE_QMore_DataStorage_Response_Read
      */
     public function readDatastorage()
     {
@@ -217,7 +217,7 @@ class Wirecard_CheckoutSeamless_Helper_Data extends Mage_Payment_Helper_Data
         $order = Mage::getModel('sales/order');
         $order->loadByIncrementId($session->getLastRealOrderId());
 
-        $dataStorageRead = new WirecardCEE_QMore_DataStorageClient($this->getConfigArray());
+        $dataStorageRead = new QentaCEE_QMore_DataStorageClient($this->getConfigArray());
         $dataStorageRead->setStorageId(Mage::getSingleton('checkout/session')->getWirecardCheckoutSeamlessStorageId());
         $dataStorageRead->read();
 
@@ -225,7 +225,7 @@ class Wirecard_CheckoutSeamless_Helper_Data extends Mage_Payment_Helper_Data
 
             $response = $dataStorageRead->read();
 
-            if ($response->getStatus() != WirecardCEE_QMore_DataStorage_Response_Read::STATE_FAILURE) {
+            if ($response->getStatus() != QentaCEE_QMore_DataStorage_Response_Read::STATE_FAILURE) {
 
                 return $response;
 

@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -30,7 +30,7 @@
  * Please do not use the plugin if you do not agree to these terms of use!
  */
 
-class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controller_Front_Action
+class Qenta_CheckoutSeamless_ProcessingController extends Mage_Core_Controller_Front_Action
 {
     protected $paymentInst;
 
@@ -61,8 +61,8 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
     public function getRedirectUrlAction()
     {
         $ret = Array('url' => Mage::getSingleton('checkout/session')->getWirecardCheckoutSeamlessRedirectUrl());
-        /** @var Wirecard_CheckoutSeamless_Helper_Data $helper */
-        $helper = Mage::helper('wirecard_checkoutseamless');
+        /** @var Qenta_CheckoutSeamless_Helper_Data $helper */
+        $helper = Mage::helper('qenta_checkoutseamless');
         $helper->log(__METHOD__ . ':' . Mage::getSingleton('checkout/session')->getWirecardCheckoutSeamlessRedirectUrl());
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($ret));
     }
@@ -74,8 +74,8 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
     {
         $postData = $this->getRequest()->getPost();
 
-        /** @var Wirecard_CheckoutSeamless_Helper_Data $helper */
-        $helper = Mage::helper('wirecard_checkoutseamless');
+        /** @var Qenta_CheckoutSeamless_Helper_Data $helper */
+        $helper = Mage::helper('qenta_checkoutseamless');
 
         if (!empty($postData) && isset($postData['payment']) && !empty($postData['payment'])) {
             $payment = $postData['payment'];
@@ -96,18 +96,18 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
      */
     public function readDatastorageAction()
     {
-        /** @var Wirecard_CheckoutSeamless_Helper_Data $helper */
-        $helper = Mage::helper('wirecard_checkoutseamless');
+        /** @var Qenta_CheckoutSeamless_Helper_Data $helper */
+        $helper = Mage::helper('qenta_checkoutseamless');
         $payment = $this->getRequest()->getPost();
 
         $ret = new \stdClass();
-        $ret->status = WirecardCEE_QMore_DataStorage_Response_Read::STATE_NOT_EXISTING;
+        $ret->status = QentaCEE_QMore_DataStorage_Response_Read::STATE_NOT_EXISTING;
         $ret->paymentInformaton = Array();
 
         if (!empty($payment) && isset($payment['payment']) && !empty($payment['payment'])) {
             $payment = $payment['payment'];
 
-            if ($payment['method'] == 'wirecard_checkoutseamless_cc' || $payment['method'] == 'wirecard_checkoutseamless_ccMoto') {
+            if ($payment['method'] == 'qenta_checkoutseamless_cc' || $payment['method'] == 'qenta_checkoutseamless_ccMoto') {
 
                 $readResponse = $helper->readDatastorage();
                 if ($readResponse) {
@@ -148,8 +148,8 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
      */
     public function returnAction()
     {
-        /** @var Wirecard_CheckoutSeamless_Helper_Data $helper */
-        $helper = Mage::helper('wirecard_checkoutseamless');
+        /** @var Qenta_CheckoutSeamless_Helper_Data $helper */
+        $helper = Mage::helper('qenta_checkoutseamless');
         try {
             if (!$this->getRequest()->isGet())
                 throw new Exception('Not a GET message');
@@ -218,8 +218,8 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
      */
     public function confirmAction()
     {
-        /** @var Wirecard_CheckoutSeamless_Helper_Data $helper */
-        $helper = Mage::helper('wirecard_checkoutseamless');
+        /** @var Qenta_CheckoutSeamless_Helper_Data $helper */
+        $helper = Mage::helper('qenta_checkoutseamless');
         try {
 
             if (!$this->getRequest()->isPost())
@@ -232,7 +232,7 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
             if (!isset($data['mage_orderId']))
                 throw new Exception('Magent OrderId is missing');
 
-            $return = WirecardCEE_QMore_ReturnFactory::getInstance($data, $helper->getConfigData('settings/secret'));
+            $return = QentaCEE_QMore_ReturnFactory::getInstance($data, $helper->getConfigData('settings/secret'));
             if (!$return->validate())
                 throw new Exception('Validation error: invalid response');
 
@@ -242,18 +242,18 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
             if (!$order->getId())
                 throw new Exception('Order not found with Id:' . $data['mage_orderId']);
 
-            /** @var Wirecard_CheckoutSeamless_Model_Abstract $paymentInst */
+            /** @var Qenta_CheckoutSeamless_Model_Abstract $paymentInst */
             $paymentInst = $order->getPayment()->getMethodInstance();
             $paymentInst->setResponse($data);
 
             switch ($return->getPaymentState()) {
-                case WirecardCEE_QMore_ReturnFactory::STATE_SUCCESS:
-                case WirecardCEE_QMore_ReturnFactory::STATE_PENDING:
+                case QentaCEE_QMore_ReturnFactory::STATE_SUCCESS:
+                case QentaCEE_QMore_ReturnFactory::STATE_PENDING:
                     $this->_confirmOrder($order, $return);
                     break;
 
-                case WirecardCEE_QMore_ReturnFactory::STATE_CANCEL:
-                    /** @var WirecardCEE_QMore_Return_Cancel $return */
+                case QentaCEE_QMore_ReturnFactory::STATE_CANCEL:
+                    /** @var QentaCEE_QMore_Return_Cancel $return */
                     if (!$this->_succeeded($order)) {
                         $msg = array();
                         foreach ($return->getErrors() as $error) {
@@ -279,8 +279,8 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
                     }
                     break;
 
-                case WirecardCEE_QMore_ReturnFactory::STATE_FAILURE:
-                    /** @var WirecardCEE_QMore_Return_Failure $return */
+                case QentaCEE_QMore_ReturnFactory::STATE_FAILURE:
+                    /** @var QentaCEE_QMore_Return_Failure $return */
                     if (!$this->_succeeded($order)) {
                         $msg = array();
                         foreach ($return->getErrors() as $error) {
@@ -312,12 +312,12 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
 
             $order->save();
 
-            die(WirecardCEE_QMore_ReturnFactory::generateConfirmResponseString());
+            die(QentaCEE_QMore_ReturnFactory::generateConfirmResponseString());
 
         } catch (Exception $e) {
             $helper->log(__METHOD__ . ':' . $e->getMessage(), Zend_Log::ERR);
 
-            die(WirecardCEE_QMore_ReturnFactory::generateConfirmResponseString($e->getMessage()));
+            die(QentaCEE_QMore_ReturnFactory::generateConfirmResponseString($e->getMessage()));
         }
     }
 
@@ -349,8 +349,8 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
      */
     protected function _cancelOrder($order)
     {
-        /** @var Wirecard_CheckoutSeamless_Helper_Data $helper */
-        $helper = Mage::helper('wirecard_checkoutseamless');
+        /** @var Qenta_CheckoutSeamless_Helper_Data $helper */
+        $helper = Mage::helper('qenta_checkoutseamless');
 
         if (!$this->_succeeded($order)) {
             $payment = $order->getPayment();
@@ -371,15 +371,15 @@ class Wirecard_CheckoutSeamless_ProcessingController extends Mage_Core_Controlle
      * Confirm the payment of an order
      *
      * @param Mage_Sales_Model_Order $order
-     * @param WirecardCEE_Stdlib_Return_ReturnAbstract $return
+     * @param QentaCEE_Stdlib_Return_ReturnAbstract $return
      */
     protected function _confirmOrder($order, $return)
     {
-        /** @var Wirecard_CheckoutSeamless_Helper_Data $helper */
-        $helper = Mage::helper('wirecard_checkoutseamless');
+        /** @var Qenta_CheckoutSeamless_Helper_Data $helper */
+        $helper = Mage::helper('qenta_checkoutseamless');
 
         if (!$this->_succeeded($order)) {
-            if ($return->getPaymentState() == WirecardCEE_QMore_ReturnFactory::STATE_PENDING) {
+            if ($return->getPaymentState() == QentaCEE_QMore_ReturnFactory::STATE_PENDING) {
                 $order->setState(Mage_Sales_Model_Order::STATE_PENDING_PAYMENT, true, $helper->__('The payment authorization is pending.'))->save();
             }
             else {

@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -31,11 +31,11 @@
  */
 
 /**
- * @name WirecardCEE_QMore_BackendClient
+ * @name QentaCEE_QMore_BackendClient
  * @category WirecardCEE
- * @package WirecardCEE_QMore
+ * @package QentaCEE_QMore
  */
-class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAbstract
+class QentaCEE_QMore_BackendClient extends QentaCEE_Stdlib_Client_ClientAbstract
 {
     /**
      * Password
@@ -247,17 +247,17 @@ class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAb
     protected $_fingerprintOrderType = 1;
 
     /**
-     * Creates an instance of an WirecardCEE_QMore_BackendClient object.
+     * Creates an instance of an QentaCEE_QMore_BackendClient object.
      *
-     * @param array|WirecardCEE_Stdlib_Config $config
+     * @param array|QentaCEE_Stdlib_Config $config
      */
     public function __construct($config = null)
     {
-        $this->_fingerprintOrder = new WirecardCEE_Stdlib_FingerprintOrder();
+        $this->_fingerprintOrder = new QentaCEE_Stdlib_FingerprintOrder();
 
         //if no config was sent fallback to default config file
         if (is_null($config)) {
-            $config = WirecardCEE_QMore_Module::getConfig();
+            $config = QentaCEE_QMore_Module::getConfig();
         }
 
         if (is_array($config) && isset( $config['WirecardCEEQMoreConfig'] )) {
@@ -266,8 +266,8 @@ class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAb
         }
 
         // let's store configuration details in internal objects
-        $this->oUserConfig = is_object($config) ? $config : new WirecardCEE_Stdlib_Config($config);
-        $this->oClientConfig = new WirecardCEE_Stdlib_Config(WirecardCEE_QMore_Module::getClientConfig());
+        $this->oUserConfig = is_object($config) ? $config : new QentaCEE_Stdlib_Config($config);
+        $this->oClientConfig = new QentaCEE_Stdlib_Config(QentaCEE_QMore_Module::getClientConfig());
 
         // now let's check if the CUSTOMER_ID, SHOP_ID, LANGUAGE and SECRET
         // exist in $this->oUserConfig object that we created from config array
@@ -279,22 +279,22 @@ class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAb
 
         // If not throw the InvalidArgumentException exception!
         if (empty( $sCustomerId ) || is_null($sCustomerId)) {
-            throw new WirecardCEE_QMore_Exception_InvalidArgumentException(sprintf('CUSTOMER_ID passed to %s is invalid.',
+            throw new QentaCEE_QMore_Exception_InvalidArgumentException(sprintf('CUSTOMER_ID passed to %s is invalid.',
                 __METHOD__));
         }
 
         if (empty( $sLanguage ) || is_null($sLanguage)) {
-            throw new WirecardCEE_QMore_Exception_InvalidArgumentException(sprintf('LANGUAGE passed to %s is invalid.',
+            throw new QentaCEE_QMore_Exception_InvalidArgumentException(sprintf('LANGUAGE passed to %s is invalid.',
                 __METHOD__));
         }
 
         if (empty( $sSecret ) || is_null($sSecret)) {
-            throw new WirecardCEE_QMore_Exception_InvalidArgumentException(sprintf('SECRET passed to %s is invalid.',
+            throw new QentaCEE_QMore_Exception_InvalidArgumentException(sprintf('SECRET passed to %s is invalid.',
                 __METHOD__));
         }
 
         if (empty( $sPassword ) || is_null($sPassword)) {
-            throw new WirecardCEE_QMore_Exception_InvalidArgumentException(sprintf('PASSWORD passed to %s is invalid.',
+            throw new QentaCEE_QMore_Exception_InvalidArgumentException(sprintf('PASSWORD passed to %s is invalid.',
                 __METHOD__));
         }
 
@@ -333,14 +333,14 @@ class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAb
 
         $this->_fingerprintOrder->setOrder($order);
 
-        return new WirecardCEE_QMore_Response_Backend_GetFinancialInstitutions($this->_send());
+        return new QentaCEE_QMore_Response_Backend_GetFinancialInstitutions($this->_send());
     }
 
     /**
      * Refund
      *
-     * @throws WirecardCEE_Stdlib_Client_Exception_InvalidResponseException
-     * @return WirecardCEE_QMore_Response_Backend_Refund
+     * @throws QentaCEE_Stdlib_Client_Exception_InvalidResponseException
+     * @return QentaCEE_QMore_Response_Backend_Refund
      */
     public function refund($iOrderNumber, $iAmount, $sCurrency, $basket=null)
     {
@@ -363,14 +363,14 @@ class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAb
         ));
         $this->_appendBasketFingerprintOrder($basket);
 
-        return new WirecardCEE_QMore_Response_Backend_Refund($this->_send());
+        return new QentaCEE_QMore_Response_Backend_Refund($this->_send());
     }
 
     /**
      * Refund reversal
      *
-     * @throws WirecardCEE_Stdlib_Client_Exception_InvalidResponseException
-     * @return WirecardCEE_QMore_Response_Backend_RefundReversal
+     * @throws QentaCEE_Stdlib_Client_Exception_InvalidResponseException
+     * @return QentaCEE_QMore_Response_Backend_RefundReversal
      */
     public function refundReversal($iOrderNumber, $iCreditNumber)
     {
@@ -389,14 +389,14 @@ class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAb
             self::CREDIT_NUMBER
         ));
 
-        return new WirecardCEE_QMore_Response_Backend_RefundReversal($this->_send());
+        return new QentaCEE_QMore_Response_Backend_RefundReversal($this->_send());
     }
 
     /**
      * Recur payment
      *
-     * @throws WirecardCEE_Stdlib_Client_Exception_InvalidResponseException
-     * @return WirecardCEE_QMore_Response_Backend_RecurPayment
+     * @throws QentaCEE_Stdlib_Client_Exception_InvalidResponseException
+     * @return QentaCEE_QMore_Response_Backend_RecurPayment
      */
     public function recurPayment(
         $iSourceOrderNumber,
@@ -436,7 +436,7 @@ class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAb
             self::CURRENCY
         ));
 
-        return new WirecardCEE_QMore_Response_Backend_RecurPayment($this->_send());
+        return new QentaCEE_QMore_Response_Backend_RecurPayment($this->_send());
     }
 
     /**
@@ -444,8 +444,8 @@ class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAb
      *
      * @param int $iOrderNumber
      *
-     * @throws WirecardCEE_Stdlib_Client_Exception_InvalidResponseException
-     * @return WirecardCEE_QMore_Response_Backend_GetOrderDetails
+     * @throws QentaCEE_Stdlib_Client_Exception_InvalidResponseException
+     * @return QentaCEE_QMore_Response_Backend_GetOrderDetails
      */
     public function getOrderDetails($iOrderNumber)
     {
@@ -461,14 +461,14 @@ class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAb
             self::ORDER_NUMBER
         ));
 
-        return new WirecardCEE_QMore_Response_Backend_GetOrderDetails($this->_send());
+        return new QentaCEE_QMore_Response_Backend_GetOrderDetails($this->_send());
     }
 
     /**
      * Approve reversal
      *
-     * @throws WirecardCEE_Stdlib_Client_Exception_InvalidResponseException
-     * @return WirecardCEE_QMore_Response_Backend_ApproveReversal
+     * @throws QentaCEE_Stdlib_Client_Exception_InvalidResponseException
+     * @return QentaCEE_QMore_Response_Backend_ApproveReversal
      */
     public function approveReversal($iOrderNumber)
     {
@@ -484,14 +484,14 @@ class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAb
             self::ORDER_NUMBER
         ));
 
-        return new WirecardCEE_QMore_Response_Backend_ApproveReversal($this->_send());
+        return new QentaCEE_QMore_Response_Backend_ApproveReversal($this->_send());
     }
 
     /**
      * Deposit
      *
-     * @throws WirecardCEE_Stdlib_Client_Exception_InvalidResponseException
-     * @return WirecardCEE_QMore_Response_Backend_Deposit
+     * @throws QentaCEE_Stdlib_Client_Exception_InvalidResponseException
+     * @return QentaCEE_QMore_Response_Backend_Deposit
      */
     public function deposit($iOrderNumber, $iAmount, $sCurrency, $basket=null)
     {
@@ -514,14 +514,14 @@ class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAb
         ));
         $this->_appendBasketFingerprintOrder($basket);
 
-        return new WirecardCEE_QMore_Response_Backend_Deposit($this->_send());
+        return new QentaCEE_QMore_Response_Backend_Deposit($this->_send());
     }
 
     /**
      * Deposit reversal
      *
-     * @throws WirecardCEE_Stdlib_Client_Exception_InvalidResponseException
-     * @return WirecardCEE_QMore_Response_Backend_DepositReversal
+     * @throws QentaCEE_Stdlib_Client_Exception_InvalidResponseException
+     * @return QentaCEE_QMore_Response_Backend_DepositReversal
      */
     public function depositReversal($iOrderNumber, $iPaymentNumber)
     {
@@ -540,37 +540,37 @@ class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAb
             self::PAYMENT_NUMBER
         ));
 
-        return new WirecardCEE_QMore_Response_Backend_DepositReversal($this->_send());
+        return new QentaCEE_QMore_Response_Backend_DepositReversal($this->_send());
     }
 
     /**
      * TransferFund
      *
-     * @throws WirecardCEE_Stdlib_Exception_InvalidTypeException
-     * @return WirecardCEE_QMore_Request_Backend_TransferFund
+     * @throws QentaCEE_Stdlib_Exception_InvalidTypeException
+     * @return QentaCEE_QMore_Request_Backend_TransferFund
      */
     public function transferFund($fundTransferType)
     {
 
         switch ($fundTransferType) {
             case self::$TRANSFER_FUND_TYPE_EXISTING:
-                $client = new WirecardCEE_QMore_Request_Backend_TransferFund_Existing($this->oUserConfig);
+                $client = new QentaCEE_QMore_Request_Backend_TransferFund_Existing($this->oUserConfig);
                 break;
 
             case self::$TRANSFER_FUND_TYPE_SKIRLLWALLET:
-                $client = new WirecardCEE_QMore_Request_Backend_TransferFund_SkrillWallet($this->oUserConfig);
+                $client = new QentaCEE_QMore_Request_Backend_TransferFund_SkrillWallet($this->oUserConfig);
                 break;
 
             case self::$TRANSFER_FUND_TYPE_MONETA:
-                $client = new WirecardCEE_QMore_Request_Backend_TransferFund_Moneta($this->oUserConfig);
+                $client = new QentaCEE_QMore_Request_Backend_TransferFund_Moneta($this->oUserConfig);
                 break;
 
             case self::$TRANSFER_FUND_TYPE_SEPACT:
-                $client = new WirecardCEE_QMore_Request_Backend_TransferFund_SepaCT($this->oUserConfig);
+                $client = new QentaCEE_QMore_Request_Backend_TransferFund_SepaCT($this->oUserConfig);
                 break;
 
             default:
-                throw new WirecardCEE_Stdlib_Exception_InvalidTypeException('Invalid fundTransferType');
+                throw new QentaCEE_Stdlib_Exception_InvalidTypeException('Invalid fundTransferType');
         }
 
         $client->setType($fundTransferType);
@@ -587,7 +587,7 @@ class WirecardCEE_QMore_BackendClient extends WirecardCEE_Stdlib_Client_ClientAb
     /**
      * Backend URL for POST-Requests
      *
-     * @see WirecardCEE_Stdlib_Client_ClientAbstract::_getRequestUrl()
+     * @see QentaCEE_Stdlib_Client_ClientAbstract::_getRequestUrl()
      * @return string
      */
     protected function _getRequestUrl()

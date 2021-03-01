@@ -1,6 +1,6 @@
 # Wirecard Checkout Seamless extension for Magento
 
-[![License](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://raw.githubusercontent.com/wirecard/Magento-WCS/master/LICENSE)
+[![License](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://raw.githubusercontent.com/qenta-cee/Magento-WCS/master/LICENSE)
 [![Magento Community Edition 1.9.3.10](https://img.shields.io/badge/Magento_CE-v1.9.3.10-green.svg)](https://www.magento.com/)
 [![PHP v5.6](https://img.shields.io/badge/php-v5.6-yellow.svg)](http://www.php.net)
 
@@ -22,6 +22,6 @@ We support the following shop systems with our shop extensions:
 * Shopware
 * WooCommerce
 
-You can find details on all our shop extensions [here](https://doc.wirecard.com/ShopSystems.html).
+You can find details on all our shop extensions [here](https://doc.qenta.com/ShopSystems.html).
 
 *Note: If you do not migrate from Magento 1, you may not comply with PCI DSS security standards.*

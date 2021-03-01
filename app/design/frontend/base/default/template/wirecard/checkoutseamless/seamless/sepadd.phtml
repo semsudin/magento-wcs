@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -31,32 +31,32 @@
  */
 ?>
 <li>
-    <label for="wirecard_checkoutseamless_sepadd_accountOwner"><?php echo $this->__('Account owner') ?></label><br/>
+    <label for="qenta_checkoutseamless_sepadd_accountOwner"><?php echo $this->__('Account owner') ?></label><br/>
     <input type="text" title="<?php echo $this->__('Account owner') ?>" class="input-text no-submit has-wcs-data"
-           id="wirecard_checkoutseamless_sepadd_accountOwner" name=" wirecard_checkoutseamless_sepadd_accountOwner"
+           id="qenta_checkoutseamless_sepadd_accountOwner" name=" qenta_checkoutseamless_sepadd_accountOwner"
            data-wcs-fieldname="accountOwner" value=""/>
 </li>
 <li>
-    <label for="wirecard_checkoutseamless_sepadd_bankBic"><?php echo $this->__('BIC') ?> <span
+    <label for="qenta_checkoutseamless_sepadd_bankBic"><?php echo $this->__('BIC') ?> <span
             class="required">*</span></label><br/>
     <input type="text" title="<?php echo $this->__('BIC') ?>"
            class="required-entry input-text no-submit has-wcs-data"
-           id="wirecard_checkoutseamless_sepadd_bankBic" name=" wirecard_checkoutseamless_sepadd_bankBic"
+           id="qenta_checkoutseamless_sepadd_bankBic" name=" qenta_checkoutseamless_sepadd_bankBic"
            data-wcs-fieldname="bankBic" value=""/>
 </li>
 <li>
-    <label for="wirecard_checkoutseamless_sepadd_bankAccountIban"><?php echo $this->__('IBAN') ?> <span
+    <label for="qenta_checkoutseamless_sepadd_bankAccountIban"><?php echo $this->__('IBAN') ?> <span
             class="required">*</span></label><br/>
     <input type="text" title="<?php echo $this->__('IBAN') ?>"
            class="required-entry input-text no-submit has-wcs-data"
-           id="wirecard_checkoutseamless_sepadd_bankAccountIban"
-           name="wirecard_checkoutseamless_sepadd_bankAccountIban"
+           id="qenta_checkoutseamless_sepadd_bankAccountIban"
+           name="qenta_checkoutseamless_sepadd_bankAccountIban"
            data-wcs-fieldname="bankAccountIban" value=""/>
 </li>
 
-<input type="hidden" value="1" name="wirecard_checkoutseamless_sepadd_new" id="wirecard_checkoutseamless_sepadd_new"
+<input type="hidden" value="1" name="qenta_checkoutseamless_sepadd_new" id="qenta_checkoutseamless_sepadd_new"
        autocomplete="off"/>
 <input type="hidden" value="<?php echo $this->getMethod()->getPaymentMethodType() ?>" class="wcs-paymentmethod"
-       id="wirecard_checkoutseamless_sepadd_type" autocomplete="off"/>
+       id="qenta_checkoutseamless_sepadd_type" autocomplete="off"/>
 
 

@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -32,18 +32,18 @@
 
 
 /**
- * @name WirecardCEE_Stdlib_Validate_Fingerprint
+ * @name QentaCEE_Stdlib_Validate_Fingerprint
  * @category WirecardCEE
- * @package WirecardCEE_Stdlib
+ * @package QentaCEE_Stdlib
  * @subpackage Validate
  */
-class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
+class QentaCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
 {
 
     /**
      * Fingeprint order
      *
-     * @var WirecardCEE_Stdlib_FingerprintOrder
+     * @var QentaCEE_Stdlib_FingerprintOrder
      */
     protected $fingerprintOrder;
 
@@ -59,7 +59,7 @@ class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
      *
      * @var string
      */
-    protected $hashAlgorithm = WirecardCEE_Stdlib_Fingerprint::HASH_ALGORITHM_SHA512;
+    protected $hashAlgorithm = QentaCEE_Stdlib_Fingerprint::HASH_ALGORITHM_SHA512;
 
     /**
      * Secret
@@ -147,9 +147,9 @@ class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
      */
     public function __construct($options = array())
     {
-        $this->fingerprintOrder = new WirecardCEE_Stdlib_FingerprintOrder();
+        $this->fingerprintOrder = new QentaCEE_Stdlib_FingerprintOrder();
 
-        if ($options instanceof WirecardCEE_Stdlib_Config) {
+        if ($options instanceof QentaCEE_Stdlib_Config) {
             $options = $options->toArray();
         }
 
@@ -176,7 +176,7 @@ class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
      *
      * @param string $sFingerprintOrderField
      *
-     * @return WirecardCEE_Stdlib_Validate_Fingerprint
+     * @return QentaCEE_Stdlib_Validate_Fingerprint
      */
     public function setFingerprintOrderField($sFingerprintOrderField)
     {
@@ -190,7 +190,7 @@ class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
      *
      * @param string $orderType
      *
-     * @return WirecardCEE_Stdlib_Validate_Fingerprint
+     * @return QentaCEE_Stdlib_Validate_Fingerprint
      */
     public function setOrderType($orderType)
     {
@@ -204,7 +204,7 @@ class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
      *
      * @param string|array $order
      *
-     * @return WirecardCEE_Stdlib_Validate_Fingerprint
+     * @return QentaCEE_Stdlib_Validate_Fingerprint
      */
     public function setOrder($order)
     {
@@ -218,12 +218,12 @@ class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
      *
      * @param string $hashAlgorithm
      *
-     * @return WirecardCEE_Stdlib_Validate_Fingerprint
+     * @return QentaCEE_Stdlib_Validate_Fingerprint
      */
     public function setHashAlgorithm($hashAlgorithm)
     {
         $this->hashAlgorithm = (string) $hashAlgorithm;
-        WirecardCEE_Stdlib_Fingerprint::setHashAlgorithm($hashAlgorithm);
+        QentaCEE_Stdlib_Fingerprint::setHashAlgorithm($hashAlgorithm);
 
         return $this;
     }
@@ -233,7 +233,7 @@ class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
      *
      * @param string $secret
      *
-     * @return WirecardCEE_Stdlib_Validate_Fingerprint
+     * @return QentaCEE_Stdlib_Validate_Fingerprint
      */
     public function setSecret($secret)
     {
@@ -247,7 +247,7 @@ class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
      *
      * @param string $mandatoryField
      *
-     * @return WirecardCEE_Stdlib_Validate_Fingerprint
+     * @return QentaCEE_Stdlib_Validate_Fingerprint
      */
     public function addMandatoryField($mandatoryField)
     {
@@ -263,7 +263,7 @@ class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
      *
      * @param array $mandatoryFields
      *
-     * @return WirecardCEE_Stdlib_Validate_Fingerprint
+     * @return QentaCEE_Stdlib_Validate_Fingerprint
      */
     public function setMandatoryFields(Array $mandatoryFields)
     {
@@ -275,22 +275,22 @@ class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
     /**
      * Is validator check valid?
      *
-     * @see WirecardCEE_Stdlib_Validate_Interface::isValid()
+     * @see QentaCEE_Stdlib_Validate_Interface::isValid()
      */
     public function isValid($value, $context = null)
     {
         $context = array_change_key_case($context, CASE_LOWER);
 
         switch ($this->hashAlgorithm) {
-            case WirecardCEE_Stdlib_Fingerprint::HASH_ALGORITHM_HMAC_SHA512:
-            case WirecardCEE_Stdlib_Fingerprint::HASH_ALGORITHM_SHA512:
+            case QentaCEE_Stdlib_Fingerprint::HASH_ALGORITHM_HMAC_SHA512:
+            case QentaCEE_Stdlib_Fingerprint::HASH_ALGORITHM_SHA512:
                 $stringLength = 128;
                 break;
-            case WirecardCEE_Stdlib_Fingerprint::HASH_ALGORITHM_MD5:
+            case QentaCEE_Stdlib_Fingerprint::HASH_ALGORITHM_MD5:
                 $stringLength = 32;
                 break;
             default:
-                throw new WirecardCEE_Stdlib_Exception_UnexpectedValueException(sprintf("Used hash algorithm '%s' is not supported. MD5, SHA512, or HMAC_SHA512 are currently supported.",
+                throw new QentaCEE_Stdlib_Exception_UnexpectedValueException(sprintf("Used hash algorithm '%s' is not supported. MD5, SHA512, or HMAC_SHA512 are currently supported.",
                     $this->hashAlgorithm));
                 break;
         }
@@ -303,7 +303,7 @@ class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
             $fingerprintOrder = $this->fingerprintOrder;
         } else {
             if (array_key_exists($this->fingerprintOrderField, $context)) {
-                $fingerprintOrder = new WirecardCEE_Stdlib_FingerprintOrder(strtolower($context[$this->fingerprintOrderField]));
+                $fingerprintOrder = new QentaCEE_Stdlib_FingerprintOrder(strtolower($context[$this->fingerprintOrderField]));
             } else {
                 $this->_error(self::FINGERPRINTORDER_MISSING);
 
@@ -313,7 +313,7 @@ class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
 
         $fingerprintOrder->setOrder(array_map('strtolower', $this->fingerprintOrder->__toArray()));
         if (!in_array('secret', $fingerprintOrder->__toArray())) {
-            throw new WirecardCEE_Stdlib_Exception_UnexpectedValueException();
+            throw new QentaCEE_Stdlib_Exception_UnexpectedValueException();
         }
 
         $fingerprintFields = Array();
@@ -325,7 +325,7 @@ class WirecardCEE_Stdlib_Validate_Fingerprint extends Zend_Validate_Abstract
             }
         }
 
-        if (!WirecardCEE_Stdlib_Fingerprint::compare($fingerprintFields, $fingerprintOrder, $value)) {
+        if (!QentaCEE_Stdlib_Fingerprint::compare($fingerprintFields, $fingerprintOrder, $value)) {
             $this->_error(self::INVALID);
 
             return false;

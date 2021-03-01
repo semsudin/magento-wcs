@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -32,11 +32,11 @@
 
 
 /**
- * @name WirecardCEE_QMore_FrontendClient
+ * @name QentaCEE_QMore_FrontendClient
  * @category WirecardCEE
- * @package WirecardCEE_QMore
+ * @package QentaCEE_QMore
  */
-class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientAbstract
+class QentaCEE_QMore_FrontendClient extends QentaCEE_Stdlib_Client_ClientAbstract
 {
     /**
      * Field name: PaymentType
@@ -160,21 +160,21 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
     /**
      * Consumer data holder
      *
-     * @var WirecardCEE_Stdlib_ConsumerData
+     * @var QentaCEE_Stdlib_ConsumerData
      */
     protected $oConsumerData;
 
     /**
      * Shopping basket data
      *
-     * @var WirecardCEE_Stdlib_Basket
+     * @var QentaCEE_Stdlib_Basket
      */
     protected $oBasket;
 
     /**
      * Internal response holder
      *
-     * @var WirecardCEE_QMore_Response_Initiation
+     * @var QentaCEE_QMore_Response_Initiation
      */
     protected $oResponse;
 
@@ -184,7 +184,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      * @staticvar string
      * @internal
      */
-    protected static $LIBRARY_NAME = 'WirecardCEE_QMore';
+    protected static $LIBRARY_NAME = 'QentaCEE_QMore';
 
     /**
      * Library version
@@ -200,11 +200,11 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      */
     public function __construct($config = null)
     {
-        $this->_fingerprintOrder = new WirecardCEE_Stdlib_FingerprintOrder();
+        $this->_fingerprintOrder = new QentaCEE_Stdlib_FingerprintOrder();
 
         //if no config was sent fallback to default config file
         if (is_null($config)) {
-            $config = WirecardCEE_QMore_Module::getConfig();
+            $config = QentaCEE_QMore_Module::getConfig();
         }
 
         if (isset( $config['WirecardCEEQMoreConfig'] )) {
@@ -213,8 +213,8 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
         }
 
         //let's store configuration details in internal objects
-        $this->oUserConfig = is_object($config) ? $config : new WirecardCEE_Stdlib_Config($config);
-        $this->oClientConfig = new WirecardCEE_Stdlib_Config(WirecardCEE_QMore_Module::getClientConfig());
+        $this->oUserConfig = is_object($config) ? $config : new QentaCEE_Stdlib_Config($config);
+        $this->oClientConfig = new QentaCEE_Stdlib_Config(QentaCEE_QMore_Module::getClientConfig());
 
         //now let's check if the CUSTOMER_ID, SHOP_ID, LANGUAGE and SECRET exist in $this->oUserConfig object that we've created from config array
         $sCustomerId = isset( $this->oUserConfig->CUSTOMER_ID ) ? trim($this->oUserConfig->CUSTOMER_ID) : null;
@@ -225,17 +225,17 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
 
         //If not throw the InvalidArgumentException exception!
         if (empty( $sCustomerId ) || is_null($sCustomerId)) {
-            throw new WirecardCEE_QMore_Exception_InvalidArgumentException(sprintf('CUSTOMER_ID passed to %s is invalid.',
+            throw new QentaCEE_QMore_Exception_InvalidArgumentException(sprintf('CUSTOMER_ID passed to %s is invalid.',
                 __METHOD__));
         }
 
         if (empty( $sLanguage ) || is_null($sLanguage)) {
-            throw new WirecardCEE_QMore_Exception_InvalidArgumentException(sprintf('LANGUAGE passed to %s is invalid.',
+            throw new QentaCEE_QMore_Exception_InvalidArgumentException(sprintf('LANGUAGE passed to %s is invalid.',
                 __METHOD__));
         }
 
         if (empty( $sSecret ) || is_null($sSecret)) {
-            throw new WirecardCEE_QMore_Exception_InvalidArgumentException(sprintf('SECRET passed to %s is invalid.',
+            throw new QentaCEE_QMore_Exception_InvalidArgumentException(sprintf('SECRET passed to %s is invalid.',
                 __METHOD__));
         }
 
@@ -248,7 +248,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
 
     /**
      *
-     * @throws WirecardCEE_QMore_Exception_InvalidArgumentException
+     * @throws QentaCEE_QMore_Exception_InvalidArgumentException
      */
     public function initiate()
     {
@@ -294,7 +294,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
         //Are there any errors in the $aMissingFields object?
         //If so throw the InvalidArgumentException and print all the fields that are missing!
         if ($aMissingFields->count()) {
-            throw new WirecardCEE_QMore_Exception_InvalidArgumentException(sprintf(
+            throw new QentaCEE_QMore_Exception_InvalidArgumentException(sprintf(
                 "Could not initiate QMore! Missing mandatory field(s): %s; thrown in %s; Please use the appropriate setter functions to set the missing fields!",
                 implode(", ", (array) $aMissingFields), __METHOD__));
         }
@@ -302,10 +302,10 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
         //this is where the magic happens! We send our data to response object and hopefully get back the response object with 'redirectUrl'.
         //Reponse object is also the one who will, if anything goes wrong, return the errors in an array!
         try {
-            $this->oResponse = new WirecardCEE_QMore_Response_Initiation($this->_send());
+            $this->oResponse = new QentaCEE_QMore_Response_Initiation($this->_send());
 
             return $this->oResponse;
-        } catch (WirecardCEE_Stdlib_Client_Exception_InvalidResponseException $e) {
+        } catch (QentaCEE_Stdlib_Client_Exception_InvalidResponseException $e) {
             throw $e;
         }
     }
@@ -315,7 +315,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param int|float $amount
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setAmount($amount)
     {
@@ -329,7 +329,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $sCurrency
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setCurrency($sCurrency)
     {
@@ -343,7 +343,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $sPaymentType
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setPaymentType($sPaymentType)
     {
@@ -357,7 +357,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $sDesc
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setOrderDescription($sDesc)
     {
@@ -371,7 +371,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $sUrl
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setSuccessUrl($sUrl)
     {
@@ -385,7 +385,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $sUrl
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setCancelUrl($sUrl)
     {
@@ -399,7 +399,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $sUrl
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setFailureUrl($sUrl)
     {
@@ -413,7 +413,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $sUrl
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setServiceUrl($sUrl)
     {
@@ -427,7 +427,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $financialInstitution
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setFinancialInstitution($financialInstitution)
     {
@@ -441,7 +441,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $confirmUrl
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setConfirmUrl($confirmUrl)
     {
@@ -455,7 +455,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $pendingUrl
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setPendingUrl($pendingUrl)
     {
@@ -469,7 +469,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $windowName
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setWindowName($windowName)
     {
@@ -483,7 +483,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param bool $duplicateRequestCheck
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setDuplicateRequestCheck($duplicateRequestCheck)
     {
@@ -499,7 +499,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $sTxIdent
      *
-     * @return WirecardCEE_QPay_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setTransactionIdentifier($sTxIdent)
     {
@@ -561,7 +561,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $orderReference
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setOrderReference($orderReference)
     {
@@ -575,7 +575,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $autoDeposit
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setAutoDeposit($autoDeposit)
     {
@@ -591,7 +591,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $orderNumber
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setOrderNumber($orderNumber)
     {
@@ -605,7 +605,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $confirmMail
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setConfirmMail($confirmMail)
     {
@@ -617,11 +617,11 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
     /**
      * adds given consumerData to QMore request
      *
-     * @param WirecardCEE_Stdlib_ConsumerData $consumerData
+     * @param QentaCEE_Stdlib_ConsumerData $consumerData
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
-    public function setConsumerData(WirecardCEE_Stdlib_ConsumerData $consumerData)
+    public function setConsumerData(QentaCEE_Stdlib_ConsumerData $consumerData)
     {
         $this->oConsumerData = $consumerData;
         foreach ($consumerData->getData() as $key => $value) {
@@ -632,10 +632,10 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
     }
 
     /**
-     * @param WirecardCEE_Stdlib_Basket $basket
+     * @param QentaCEE_Stdlib_Basket $basket
      * @return $this
      */
-    public function setBasket(WirecardCEE_Stdlib_Basket $basket) {
+    public function setBasket(QentaCEE_Stdlib_Basket $basket) {
         $this->oBasket = $basket;
         foreach($basket->getData() AS $key => $value) {
             $this->_setField($key, $value);
@@ -649,7 +649,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      * @param string $orderIdent
      * @param string $storageId
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setStorageReference($orderIdent, $storageId)
     {
@@ -663,7 +663,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $sStorageId
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setStorageId($sStorageId)
     {
@@ -677,7 +677,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      *
      * @param string $sOrderIdent
      *
-     * @return WirecardCEE_QMore_FrontendClient
+     * @return QentaCEE_QMore_FrontendClient
      */
     public function setOrderIdent($sOrderIdent)
     {
@@ -713,12 +713,12 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
     /**
      * Getter for response object
      *
-     * @return WirecardCEE_QMore_Response_Initiation
+     * @return QentaCEE_QMore_Response_Initiation
      * @throws Exception
      */
     public function getResponse()
     {
-        if (!$this->oResponse instanceof WirecardCEE_QMore_Response_Initiation) {
+        if (!$this->oResponse instanceof QentaCEE_QMore_Response_Initiation) {
             throw new Exception(sprintf("%s should be called after the initiate() function!", __METHOD__));
         }
 
@@ -780,15 +780,15 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
      */
     protected function _isConsumerDataValid()
     {
-        // if consumer data is not an instance of WirecardCEE_Stdlib_ConsumerData
+        // if consumer data is not an instance of QentaCEE_Stdlib_ConsumerData
         // or if it's empty don't even bother with any checkings...
-        if (empty( $this->oConsumerData ) || !$this->oConsumerData instanceof WirecardCEE_Stdlib_ConsumerData) {
+        if (empty( $this->oConsumerData ) || !$this->oConsumerData instanceof QentaCEE_Stdlib_ConsumerData) {
             return false;
         }
 
-        // @see WirecardCEE_QMore_Request_Initiation_ConsumerData
-        $sConsumerIpAddressField = WirecardCEE_Stdlib_ConsumerData::getConsumerIpAddressFieldName();
-        $sConsumerUserAgentField = WirecardCEE_Stdlib_ConsumerData::getConsumerUserAgentFieldName();
+        // @see QentaCEE_QMore_Request_Initiation_ConsumerData
+        $sConsumerIpAddressField = QentaCEE_Stdlib_ConsumerData::getConsumerIpAddressFieldName();
+        $sConsumerUserAgentField = QentaCEE_Stdlib_ConsumerData::getConsumerUserAgentFieldName();
 
         // get all the consumer data in an array
         // @todo when 5.4 becomes available on our server we coulde use eg. $this->oConsumerData->getData()[$sConsumerIpAddressField]
@@ -811,7 +811,7 @@ class WirecardCEE_QMore_FrontendClient extends WirecardCEE_Stdlib_Client_ClientA
     }
 
     /**
-     * @see WirecardCEE_Stdlib_Client_ClientAbstract::_getRequestUrl()
+     * @see QentaCEE_Stdlib_Client_ClientAbstract::_getRequestUrl()
      */
     protected function _getRequestUrl()
     {

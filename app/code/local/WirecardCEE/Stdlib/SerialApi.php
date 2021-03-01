@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -32,11 +32,11 @@
 
 
 /**
- * @name WirecardCEE_Stdlib_SerialApi
+ * @name QentaCEE_Stdlib_SerialApi
  * @category WirecardCEE
- * @package WirecardCEE_Stdlib
+ * @package QentaCEE_Stdlib
  */
-class WirecardCEE_Stdlib_SerialApi
+class QentaCEE_Stdlib_SerialApi
 {
     /**
      * Encode the mixed[] $valueToEncode into the SerialAPI format
@@ -44,7 +44,7 @@ class WirecardCEE_Stdlib_SerialApi
      * NOTE: only Strings can be handled. So for every object the __toString
      * will be called.
      *
-     * @throws WirecardCEE_Stdlib_Exception_InvalidTypeException if valueToEncode is not an array.
+     * @throws QentaCEE_Stdlib_Exception_InvalidTypeException if valueToEncode is not an array.
      *
      * @param mixed[] $aValueToEncode
      *
@@ -60,7 +60,7 @@ class WirecardCEE_Stdlib_SerialApi
 
             return $serializedString;
         } else {
-            throw new WirecardCEE_Stdlib_Exception_InvalidTypeException(sprintf('Invalid type for %s. Array must be given.',
+            throw new QentaCEE_Stdlib_Exception_InvalidTypeException(sprintf('Invalid type for %s. Array must be given.',
                 __METHOD__));
         }
     }
@@ -176,7 +176,7 @@ class WirecardCEE_Stdlib_SerialApi
      * @param string $sEntry
      * @param array $aDecodedValue
      *
-     * @throws WirecardCEE_Stdlib_Exception_InvalidFormatException
+     * @throws QentaCEE_Stdlib_Exception_InvalidFormatException
      * @return Array
      */
     protected static function _addEntryDecode($sEntry, $aDecodedValue)
@@ -208,7 +208,7 @@ class WirecardCEE_Stdlib_SerialApi
 
             return $aDecodedValue;
         } else {
-            throw new WirecardCEE_Stdlib_Exception_InvalidFormatException('Invalid format for WirecardCEE_Stdlib_SerialApi::decode. Expecting key=value pairs');
+            throw new QentaCEE_Stdlib_Exception_InvalidFormatException('Invalid format for QentaCEE_Stdlib_SerialApi::decode. Expecting key=value pairs');
         }
     }
 

@@ -2,8 +2,8 @@
 /**
  * Shop System Plugins - Terms of Use
  *
- * The plugins offered are provided free of charge by Wirecard Central Eastern Europe GmbH
- * (abbreviated to Wirecard CEE) and are explicitly not part of the Wirecard CEE range of
+ * The plugins offered are provided free of charge by Qenta Payment CEE GmbH
+ * (abbreviated to Qenta CEE) and are explicitly not part of the Qenta CEE range of
  * products and services.
  *
  * They have been tested and approved for full functionality in the standard configuration
@@ -11,15 +11,15 @@
  * License Version 2 (GPLv2) and can be used, developed and passed on to third parties under
  * the same terms.
  *
- * However, Wirecard CEE does not provide any guarantee or accept any liability for any errors
+ * However, Qenta CEE does not provide any guarantee or accept any liability for any errors
  * occurring when used in an enhanced, customized shop system configuration.
  *
  * Operation in an enhanced, customized configuration is at your own risk and requires a
  * comprehensive test phase by the user of the plugin.
  *
- * Customers use the plugins at their own risk. Wirecard CEE does not guarantee their full
- * functionality neither does Wirecard CEE assume liability for any disadvantages related to
- * the use of the plugins. Additionally, Wirecard CEE does not guarantee the full functionality
+ * Customers use the plugins at their own risk. Qenta CEE does not guarantee their full
+ * functionality neither does Qenta CEE assume liability for any disadvantages related to
+ * the use of the plugins. Additionally, Qenta CEE does not guarantee the full functionality
  * for customized shop systems or installed plugins of other vendors of plugins within the same
  * shop system.
  *
@@ -30,14 +30,14 @@
  * Please do not use the plugin if you do not agree to these terms of use!
  */
 
-abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Model_Method_Abstract
+abstract class Qenta_CheckoutSeamless_Model_Abstract extends Mage_Payment_Model_Method_Abstract
 {
     /**
      * unique internal payment method identifier
      *
      * @var string [a-z0-9_]
      **/
-    protected $_code = 'wirecard_checkoutseamless_abstract';
+    protected $_code = 'qenta_checkoutseamless_abstract';
 
     protected $_isGateway = false;
     protected $_canAuthorize = true;
@@ -56,8 +56,8 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
     protected $_pluginVersion = '4.2.8';
     protected $_pluginName = 'Wirecard/CheckoutSeamless';
 
-    protected $_formBlockType = 'wirecard_checkoutseamless/form';
-    protected $_infoBlockType = 'wirecard_checkoutseamless/info';
+    protected $_formBlockType = 'qenta_checkoutseamless/form';
+    protected $_infoBlockType = 'qenta_checkoutseamless/info';
 
     protected $_forceSendAdditionalData = false;
 
@@ -75,8 +75,8 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
      */
     public function getTitle()
     {
-        /** @var Wirecard_CheckoutPage_Helper_Data $helper */
-        $helper = Mage::helper('wirecard_checkoutseamless');
+        /** @var Qenta_CheckoutPage_Helper_Data $helper */
+        $helper = Mage::helper('qenta_checkoutseamless');
 
         $translated = $helper->__($this->_paymentMethod);
         if ($translated == $this->_paymentMethod) {
@@ -104,7 +104,7 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
     public function getOrderPlaceRedirectUrl()
     {
         Mage::getSingleton('core/session')->unsWirecardCheckoutSeamlessRedirectUrl();
-        return Mage::getUrl('wirecard_checkoutseamless/processing/checkout', array('_secure' => true));
+        return Mage::getUrl('qenta_checkoutseamless/processing/checkout', array('_secure' => true));
     }
 
     public function capture(Varien_Object $payment, $amount)
@@ -142,19 +142,19 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
     public function initPayment($storageId, $orderIdent)
     {
         $order = $this->getOrder();
-        /** @var Wirecard_CheckoutSeamless_Helper_Data $helper */
-        $helper = Mage::helper('wirecard_checkoutseamless');
+        /** @var Qenta_CheckoutSeamless_Helper_Data $helper */
+        $helper = Mage::helper('qenta_checkoutseamless');
         $session = Mage::getModel('customer/session');
 
         $precision = 2;
 
-        $returnUrl = Mage::getUrl('wirecard_checkoutseamless/processing/return', array('_secure' => true, '_nosid' => true));
+        $returnUrl = Mage::getUrl('qenta_checkoutseamless/processing/return', array('_secure' => true, '_nosid' => true));
 
-        $init = new WirecardCEE_QMore_FrontendClient($helper->getConfigArray());
+        $init = new QentaCEE_QMore_FrontendClient($helper->getConfigArray());
 
         $init->setPluginVersion($helper->getPluginVersion());
 
-        $init->setConfirmUrl(Mage::getUrl('wirecard_checkoutseamless/processing/confirm', array('_secure' => true, '_nosid' => true)));
+        $init->setConfirmUrl(Mage::getUrl('qenta_checkoutseamless/processing/confirm', array('_secure' => true, '_nosid' => true)));
         $init->setOrderReference(sprintf('%010d', $this->getOrder()->getRealOrderId()));
 
         if (strlen($storageId))
@@ -184,22 +184,22 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
 
         $init->mage_orderId = $this->getOrder()->getRealOrderId();
 
-        if (strlen($session->getData('wirecard_cs_consumerDeviceId'))) {
-            $init->consumerDeviceId = $session->getData('wirecard_cs_consumerDeviceId');
-            $session->unsetData('wirecard_cs_consumerDeviceId');
+        if (strlen($session->getData('qenta_cs_consumerDeviceId'))) {
+            $init->consumerDeviceId = $session->getData('qenta_cs_consumerDeviceId');
+            $session->unsetData('qenta_cs_consumerDeviceId');
         }
 
         $init->generateCustomerStatement($helper->getConfigData('options/shopname'));
 
         if ($helper->getConfigData('options/sendbasketinformation')
-            || ($this->_paymentMethod == WirecardCEE_Stdlib_PaymentTypeAbstract::INSTALLMENT && $this->getConfigData('provider') == 'ratepay')
-            || ($this->_paymentMethod == WirecardCEE_Stdlib_PaymentTypeAbstract::INVOICE && $this->getConfigData('provider') == 'ratepay')
+            || ($this->_paymentMethod == QentaCEE_Stdlib_PaymentTypeAbstract::INSTALLMENT && $this->getConfigData('provider') == 'ratepay')
+            || ($this->_paymentMethod == QentaCEE_Stdlib_PaymentTypeAbstract::INVOICE && $this->getConfigData('provider') == 'ratepay')
         ) {
-            $basket = new WirecardCEE_Stdlib_Basket();
+            $basket = new QentaCEE_Stdlib_Basket();
 
             foreach ($order->getAllVisibleItems() as $item) {
                 /** @var Mage_Sales_Model_Order_Item $item */
-                $bitem = new WirecardCEE_Stdlib_Basket_Item();
+                $bitem = new QentaCEE_Stdlib_Basket_Item();
                 $bitem->setDescription($item->getProduct()->getName());
                 $bitem->setArticleNumber($item->getSku());
                 $bitem->setUnitGrossAmount(number_format($item->getPriceInclTax(), $precision, '.', ''));
@@ -210,7 +210,7 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
                 $basket->addItem($bitem, (int)$item->getQtyOrdered());
                 $helper->log(print_r($bitem, true));
             }
-            $bitem = new WirecardCEE_Stdlib_Basket_Item();
+            $bitem = new QentaCEE_Stdlib_Basket_Item();
             $bitem->setArticleNumber('shipping');
             $bitem->setUnitGrossAmount(number_format($order->getShippingInclTax(), $precision, '.', ''));
             $bitem->setUnitNetAmount(number_format($order->getShippingAmount(), $precision, '.', ''));
@@ -244,7 +244,7 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
             throw new Exception($message);
         }
 
-        if ($initResponse->getStatus() == WirecardCEE_QMore_Response_Initiation::STATE_FAILURE) {
+        if ($initResponse->getStatus() == QentaCEE_QMore_Response_Initiation::STATE_FAILURE) {
             $msg = array();
             foreach ($initResponse->getErrors() as $error) {
                 $msg[] = $error->getConsumerMessage();
@@ -278,12 +278,12 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
     }
 
     /**
-     * @return WirecardCEE_Stdlib_ConsumerData
+     * @return QentaCEE_Stdlib_ConsumerData
      * @throws Zend_Controller_Request_Exception
      */
     protected function _getConsumerData()
     {
-        $consumerData = new WirecardCEE_Stdlib_ConsumerData();
+        $consumerData = new QentaCEE_Stdlib_ConsumerData();
         $consumerData->setIpAddress(Mage::app()->getRequest()->getServer('REMOTE_ADDR'));
         $consumerData->setUserAgent(Mage::app()->getRequest()->getHeader('User-Agent'));
 
@@ -307,17 +307,17 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
      * @param Mage_Sales_Model_Order_Address $source
      * @param string $type
      *
-     * @return WirecardCEE_Stdlib_ConsumerData_Address
+     * @return QentaCEE_Stdlib_ConsumerData_Address
      */
     protected function _getAddress($source, $type = 'billing')
     {
         switch ($type) {
             case 'shipping':
-                $address = new WirecardCEE_Stdlib_ConsumerData_Address(WirecardCEE_Stdlib_ConsumerData_Address::TYPE_SHIPPING);
+                $address = new QentaCEE_Stdlib_ConsumerData_Address(QentaCEE_Stdlib_ConsumerData_Address::TYPE_SHIPPING);
                 break;
 
             default:
-                $address = new WirecardCEE_Stdlib_ConsumerData_Address(WirecardCEE_Stdlib_ConsumerData_Address::TYPE_BILLING);
+                $address = new QentaCEE_Stdlib_ConsumerData_Address(QentaCEE_Stdlib_ConsumerData_Address::TYPE_BILLING);
                 break;
         }
 
@@ -401,11 +401,11 @@ abstract class Wirecard_CheckoutSeamless_Model_Abstract extends Mage_Payment_Mod
     }
 
     /**
-     * @return Wirecard_CheckoutSeamless_Helper_Data
+     * @return Qenta_CheckoutSeamless_Helper_Data
      */
     protected function _getHelper()
     {
-        return Mage::helper('wirecard_checkoutseamless');
+        return Mage::helper('qenta_checkoutseamless');
     }
 
     /**
