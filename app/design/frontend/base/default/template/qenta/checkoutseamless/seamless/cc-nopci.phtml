@@ -45,6 +45,6 @@ $_code = $this->getMethod()->getFormCode();
 <input type="hidden" value="1" name="qenta_checkoutseamless_<?php echo $_code ?>_pci3" id="qenta_checkoutseamless_<?php echo $_code ?>_pci3" autocomplete="off" />
 <input type="hidden" value="CCARD" class="wcs-paymentmethod" id="qenta_checkoutseamless_<?php echo $_code ?>_type" autocomplete="off" />
 <script type="text/javascript">
-    var wdcee = new QentaCEE_DataStorage();
+    var wdcee = new WirecardCEE_DataStorage();
     qentaDatastorageIframe = wdcee.buildIframeCreditCard('qenta_checkoutseamless_iframe_<?php echo $_code ?>', '100%', '320px');
 </script>
