@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_Stdlib_Return_Success_SepaDD
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  * @subpackage Return_Success
  */

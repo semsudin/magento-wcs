@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_Stdlib_Return_Failure
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  * @subpackage Return
  * @abstract

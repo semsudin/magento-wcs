@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_QMore_PaymentType
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  */
 class QentaCEE_QMore_PaymentType extends QentaCEE_Stdlib_PaymentTypeAbstract

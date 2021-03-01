@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_QMore_Response_ResponseAbstract
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  * @subpackage Response
  * @abstract

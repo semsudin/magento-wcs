@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_QMore_Request_Backend_TransferFund_SkrillWallet
- * @category WirecardCEE
+ * @category QentaCEE
  * @package  QentaCEE_QMore
  */
 class QentaCEE_QMore_Request_Backend_TransferFund_SkrillWallet extends QentaCEE_QMore_Request_Backend_TransferFund

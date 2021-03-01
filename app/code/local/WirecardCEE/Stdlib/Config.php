@@ -34,7 +34,7 @@
 /**
  *
  * @name QentaCEE_Stdlib_Config
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  */
 class QentaCEE_Stdlib_Config implements Countable, Iterator

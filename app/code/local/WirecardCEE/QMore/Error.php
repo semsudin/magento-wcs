@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_QMore_Error
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  */
 class QentaCEE_QMore_Error extends QentaCEE_Stdlib_Error

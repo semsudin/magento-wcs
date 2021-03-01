@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_QMore_Return_Cancel
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  * @subpackage Return
  */

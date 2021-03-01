@@ -34,7 +34,7 @@
 
 /**
  * @name QentaCEE_Stdlib_Return_ReturnAbstract
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  * @subpackage Return
  * @abstract

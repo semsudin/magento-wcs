@@ -47,7 +47,7 @@ class Qenta_CheckoutSeamless_Model_Autoloader extends Mage_Core_Model_Observer
 
     public function autoload($class)
     {
-        // rewrite class filename, avoid conflicts with installed old plugin, which resides under WirecardCEE
+        // rewrite class filename, avoid conflicts with installed old plugin, which resides under QentaCEE
         if (preg_match('/^QentaCEE_/', $class)) {
             if(defined('COMPILER_INCLUDE_PATH')) {
                 $classFile = COMPILER_INCLUDE_PATH . DIRECTORY_SEPARATOR . $class . '.php';

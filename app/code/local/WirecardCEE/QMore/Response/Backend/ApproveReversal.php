@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_QMore_Response_Backend_ApproveReversal
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  * @subpackage Response_Backend
  */

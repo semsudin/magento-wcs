@@ -35,7 +35,7 @@
  * Factory method for returned params validators
  *
  * @name QentaCEE_Stdlib_ReturnFactoryAbstract
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  * @subpackage Return
  * @abstract

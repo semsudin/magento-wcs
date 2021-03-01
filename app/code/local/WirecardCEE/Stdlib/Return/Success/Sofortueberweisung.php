@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_Stdlib_Return_Success_Sofortueberweisung
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  * @subpackage Return_Success
  * @abstract

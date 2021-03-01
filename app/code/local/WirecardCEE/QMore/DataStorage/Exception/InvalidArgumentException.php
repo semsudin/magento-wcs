@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_QMore_DataStorage_Exception_InvalidArgumentException
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  * @subpackage DataStorage_Exception
  */

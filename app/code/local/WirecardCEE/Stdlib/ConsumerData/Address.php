@@ -35,7 +35,7 @@
  * Container class for consumerData
  *
  * @name QentaCEE_Stdlib_ConsumerData
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  * @subpackage ConsumerData
  */

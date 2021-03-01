@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_Stdlib_Basket
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  * @subpackage Basket
  */
@@ -97,7 +97,7 @@ class QentaCEE_Stdlib_Basket
     }
 
     /**
-     * Returns the basket as pre-defined array (defined by WirecardCEE)
+     * Returns the basket as pre-defined array (defined by QentaCEE)
      *
      * @return Array
      */

@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_Stdlib_Exception_InvalidArgumentException
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  * @subpackage Exception
  */

@@ -36,7 +36,7 @@
  * Please input your details
  */
 return Array(
-    'WirecardCEEQMoreConfig' => Array(
+    'QentaCEEQMoreConfig' => Array(
         'CUSTOMER_ID' => 'D200001',
         'SHOP_ID'     => 'qmore',
         'SECRET'      => 'B8AKTPWBRMNBV455FG6M2DANE99WU2',

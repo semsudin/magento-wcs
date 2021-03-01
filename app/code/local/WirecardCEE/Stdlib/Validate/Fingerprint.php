@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_Stdlib_Validate_Fingerprint
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  * @subpackage Validate
  */

@@ -32,7 +32,7 @@
 
 /**
  * @name QentaCEE_QMore_DataStorage_Request_Read
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  * @subpackage DataStorage_Request
  */
@@ -67,9 +67,9 @@ class QentaCEE_QMore_DataStorage_Request_Read extends QentaCEE_Stdlib_Client_Cli
             $aConfig = QentaCEE_QMore_Module::getConfig();
         }
 
-        if (isset( $aConfig['WirecardCEEQMoreConfig'] )) {
-            //we only need the WirecardCEEQMoreConfig here
-            $aConfig = $aConfig['WirecardCEEQMoreConfig'];
+        if (isset( $aConfig['QentaCEEQMoreConfig'] )) {
+            //we only need the QentaCEEQMoreConfig here
+            $aConfig = $aConfig['QentaCEEQMoreConfig'];
         }
 
         //let's store configuration details in internal objects

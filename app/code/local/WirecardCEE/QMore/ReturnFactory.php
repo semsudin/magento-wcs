@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_QMore_ReturnFactory
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  * @subpackage Return
  */

@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_QMore_Exception_InvalidResponseException
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  * @subpackage Exception
  */

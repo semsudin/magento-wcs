@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_QMore_DataStorageClient
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  */
 class QentaCEE_QMore_DataStorageClient extends QentaCEE_Stdlib_Client_ClientAbstract
@@ -182,9 +182,9 @@ class QentaCEE_QMore_DataStorageClient extends QentaCEE_Stdlib_Client_ClientAbst
             $config = QentaCEE_QMore_Module::getConfig();
         }
 
-        if (isset( $config['WirecardCEEQMoreConfig'] )) {
-            //we only need WirecardCEEQMoreConfig here
-            $config = $config['WirecardCEEQMoreConfig'];
+        if (isset( $config['QentaCEEQMoreConfig'] )) {
+            //we only need QentaCEEQMoreConfig here
+            $config = $config['QentaCEEQMoreConfig'];
         }
 
         $this->oUserConfig   = is_object($config) ? $config : new QentaCEE_Stdlib_Config($config);

@@ -32,7 +32,7 @@
 
 /**
  * @name QentaCEE_Stdlib_Client_ClientAbstract
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  * @subpackage Client
  * @abstract

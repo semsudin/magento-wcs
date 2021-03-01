@@ -35,7 +35,7 @@ use Psr\Http\Message\ResponseInterface;
 
 /**
  * @name QentaCEE_Stdlib_Response_ResponseAbstract
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  * @subpackage Response
  * @abstract
@@ -107,7 +107,7 @@ abstract class QentaCEE_Stdlib_Response_ResponseAbstract
         } elseif (is_array($response)) {
             $this->_response = $response;
         } else {
-            throw new QentaCEE_Stdlib_Exception_InvalidResponseException(sprintf('Invalid response from WirecardCEE thrown in %s.',
+            throw new QentaCEE_Stdlib_Exception_InvalidResponseException(sprintf('Invalid response from QentaCEE thrown in %s.',
                 __METHOD__));
         }
     }

@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_QMore_Module
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  * @subpackage Module
  */

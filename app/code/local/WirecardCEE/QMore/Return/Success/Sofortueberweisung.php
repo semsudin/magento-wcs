@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_QMore_Return_Success_PayPal
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  * @subpackage Return_Success
  */

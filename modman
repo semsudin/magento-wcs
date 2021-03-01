@@ -1,5 +1,5 @@
 app/code/community/Wirecard/CheckoutSeamless                            app/code/community/Wirecard/CheckoutSeamless
-app/code/local/WirecardCEE                                              app/code/local/WirecardCEE
+app/code/local/QentaCEE                                              app/code/local/QentaCEE
 app/design/adminhtml/default/default/template/qenta                  app/design/adminhtml/default/default/template/qenta
 app/design/frontend/base/default/layout/qenta_checkoutseamless.xml   app/design/frontend/base/default/layout/qenta_checkoutseamless.xml
 app/design/frontend/base/default/template/qenta                      app/design/frontend/base/default/template/qenta

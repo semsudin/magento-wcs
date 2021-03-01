@@ -48,7 +48,7 @@
  * which will return the number of items in fingeprintOrder array
  *
  * @name QentaCEE_Stdlib_FingerprintOrder
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  */
 

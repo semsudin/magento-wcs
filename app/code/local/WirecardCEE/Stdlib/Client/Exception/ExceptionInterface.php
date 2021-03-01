@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_Stdlib_Client_Exception_ExceptionInterface
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  * @subpackage Client_Exception
  */

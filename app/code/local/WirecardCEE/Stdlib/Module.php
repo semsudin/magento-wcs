@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_Stdlib_Module
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  * @subpackage Module
  */

@@ -32,7 +32,7 @@
 
 /**
  * @name QentaCEE_QMore_BackendClient
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  */
 class QentaCEE_QMore_BackendClient extends QentaCEE_Stdlib_Client_ClientAbstract
@@ -260,9 +260,9 @@ class QentaCEE_QMore_BackendClient extends QentaCEE_Stdlib_Client_ClientAbstract
             $config = QentaCEE_QMore_Module::getConfig();
         }
 
-        if (is_array($config) && isset( $config['WirecardCEEQMoreConfig'] )) {
-            // we only need the WirecardCEEQMoreConfig here
-            $config = $config['WirecardCEEQMoreConfig'];
+        if (is_array($config) && isset( $config['QentaCEEQMoreConfig'] )) {
+            // we only need the QentaCEEQMoreConfig here
+            $config = $config['QentaCEEQMoreConfig'];
         }
 
         // let's store configuration details in internal objects

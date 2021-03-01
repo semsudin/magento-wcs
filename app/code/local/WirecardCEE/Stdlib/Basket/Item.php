@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_Stdlib_Basket_Item
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_Stdlib
  * @subpackage Basket
  */

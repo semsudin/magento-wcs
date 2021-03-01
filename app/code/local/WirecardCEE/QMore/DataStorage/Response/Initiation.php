@@ -33,7 +33,7 @@
 
 /**
  * @name QentaCEE_QMore_DataStorage_Response_Initiation
- * @category WirecardCEE
+ * @category QentaCEE
  * @package QentaCEE_QMore
  * @subpackage DataStorage_Response
  */
